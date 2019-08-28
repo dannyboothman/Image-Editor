@@ -66,8 +66,10 @@ function buildText(item){
     var text = item.value;
     var color = item.styles.color;
     var fontSize = item.styles.fontSize + "px";
+    var opacity = item.styles.opacity;
+    opacity = opacity/100;
 
-    var html = '<div class="fcv_item fcv_item_selected" data-id="' + id + '" ondblclick="alert()" style="z-index: ' + zIndex + '; color: ' + color + '; font-size: ' + fontSize + ';">' + text + '</div>';
+    var html = '<div class="fcv_item fcv_item_selected" data-id="' + id + '" style="z-index: ' + zIndex + '; color: ' + color + '; font-size: ' + fontSize + '; opacity: ' + opacity + '">' + text + '</div>';
 
     document.getElementById("favicon_creator_visual").innerHTML += html;
 
