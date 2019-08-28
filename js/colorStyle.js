@@ -36,6 +36,7 @@ function buildColorStyleSection(element){
 
     document.querySelector("#colorStyle_text_input").value = element.value;
     document.querySelector("#colorStyle_text_size_input").value = element.styles.fontSize;
+    document.querySelector("#colorStyle_text_opacity_input").value = element.styles.opacity;
 
 }
 
@@ -73,4 +74,19 @@ function colorStyleInputFontSizeChange(){
     element.styles.fontSize = fontSize;
     document.querySelector(".fcv_item[data-id='"+element.id+"']").style.fontSize = element.styles.fontSize + "px";
 
+}
+
+function colorStyleInputOpacityChange(){
+    console.log(colorStyleElement)
+
+    var element = layers.filter(function(layer) {
+        return layer.id === colorStyleElement;
+    });
+
+    element = element[0];
+
+    var opacity = document.querySelector("#colorStyle_text_opacity_input").value;
+    element.styles.opacity = opacity;
+    opacity = opacity/100;
+    document.querySelector(".fcv_item[data-id='"+element.id+"']").style.opacity = opacity;
 }
