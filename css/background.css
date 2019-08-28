@@ -1,0 +1,86 @@
+
+
+#favicon_creator_editor_canvas_fill_type{
+    display: flex;
+}
+
+.favicon_creator_editor_canvas_fill_type_item{
+    width: 40px;
+    height: 40px;
+    border: 3px dashed #ddd;
+    border-radius: 4px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    transition: 0.4s;
+    cursor: pointer;
+    display: flex;
+}
+
+.favicon_creator_editor_canvas_fill_type_item:hover,
+.favicon_creator_editor_canvas_fill_type_item_selected{
+    border-color: #339af0;
+}
+
+.favicon_creator_editor_canvas_fill_type_item_inner{
+    margin: 2px;
+    width: 100%;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.favicon_creator_editor_canvas_fill_type_item[data-type="none"] .favicon_creator_editor_canvas_fill_type_item_inner{
+    color: #ff6b6b;
+    font-size: 1.5em;
+}
+
+.favicon_creator_editor_canvas_fill_type_item[data-type="gradient"] .favicon_creator_editor_canvas_fill_type_item_inner{
+    background: linear-gradient(90deg, rgba(0, 58, 105,1) 0%, rgba(51,154,240,1) 100%);
+}
+
+.favicon_creator_editor_canvas_fill_type_item[data-type="pattern"] .favicon_creator_editor_canvas_fill_type_item_inner{
+    background-color: #339af0;
+    color: #2a80c7;
+    position: relative;
+}
+
+.favicon_creator_editor_canvas_fill_type_item[data-type="pattern"] .favicon_creator_editor_canvas_fill_type_item_inner i{
+    position: absolute;
+}
+
+.favicon_creator_editor_canvas_fill_type_item[data-type="pattern"] .favicon_creator_editor_canvas_fill_type_item_inner i:nth-child(1){
+    top: -5px;
+    left: -5px;
+}
+
+.favicon_creator_editor_canvas_fill_type_item[data-type="pattern"] .favicon_creator_editor_canvas_fill_type_item_inner i:nth-child(2){
+    top: -5px;
+    right: -5px;
+}
+
+.favicon_creator_editor_canvas_fill_type_item[data-type="pattern"] .favicon_creator_editor_canvas_fill_type_item_inner i:nth-child(4){
+    bottom: -5px;
+    left: -5px;
+}
+
+.favicon_creator_editor_canvas_fill_type_item[data-type="pattern"] .favicon_creator_editor_canvas_fill_type_item_inner i:nth-child(5){
+    bottom: -5px;
+    right: -5px;
+}
+
+.favicon_creator_editor_canvas_fill_type_item[data-type="image"] .favicon_creator_editor_canvas_fill_type_item_inner{
+    background-color: #339af0;
+    color: #FFF;
+    font-size: 1.5em;
+}
+
+
+.favicon_creator_canvas_fill_type_container_item{
+    display: none;
+}
+
+.favicon_creator_canvas_fill_type_container_item.favicon_creator_canvas_fill_type_container_item_selected{
+    display: block;
+}

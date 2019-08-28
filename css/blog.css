@@ -1,0 +1,15 @@
+
+
+#blog{
+    max-width: 600px;
+    padding: 100px 0;
+    margin: 0 auto;
+}
+
+.blog_item{
+    margin-top: 40px;
+}
+
+.blog_item:first-child{
+    margin-top: 0 !important;
+}
