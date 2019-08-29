@@ -145,7 +145,8 @@ function modalAddElementFinal(){
             var styles = {
                 "color": "#FFFFFF",
                 "fontSize": 100,
-                "opacity": 100
+                "opacity": 100,
+                "bold": false
             }
             document.getElementById("modal_add_element_text").value = "";
             break;

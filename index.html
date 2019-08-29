@@ -120,18 +120,32 @@
 
             <div class="favicon_creator_editor_section" data-editorSection="Edit">
                 <div class="favicon_creator_editor_section_colorStyle_item" data-type="text">
-                    <div class="input_container">
-                        <label for="colorStyle_text_input">Text</label>
-                        <input type="text" id="colorStyle_text_input" onchange="colorStyleInputChange()" onkeydown="colorStyleInputChange();" onkeyup="colorStyleInputChange();" />
-                        <div class="input_helper_text">Recommended: 1 Character</div>
+                    <div class="colorStyle_text_section">
+                        <div class="input_container">
+                            <label for="colorStyle_text_input">Text</label>
+                            <input type="text" id="colorStyle_text_input" onchange="colorStyleInputChange()" onkeydown="colorStyleInputChange();" onkeyup="colorStyleInputChange();" />
+                            <div class="input_helper_text">Recommended: 1 Character</div>
+                        </div>
                     </div>
-                    <div class="input_container margint10">
-                        <label for="colorStyle_text_size_input">Font Size</label>
-                        <input type="number" id="colorStyle_text_size_input" min="1" step="1" value="100" onchange="colorStyleInputFontSizeChange()" onkeydown="colorStyleInputFontSizeChange();" onkeyup="colorStyleInputFontSizeChange();" />
+                    <div class="colorStyle_text_section">
+                        <div class="input_container margint10">
+                            <label for="colorStyle_text_size_input">Font Size</label>
+                            <input type="number" id="colorStyle_text_size_input" min="1" step="1" value="100" onchange="colorStyleInputFontSizeChange()" onkeydown="colorStyleInputFontSizeChange();" onkeyup="colorStyleInputFontSizeChange();" />
+                        </div>
                     </div>
-                    <div class="input_container margint10">
-                        <label for="colorStyle_text_opacity_input">Opacity</label>
-                        <input type="range" id="colorStyle_text_opacity_input" min="0" max="100" step="1" value="100" onchange="colorStyleInputOpacityChange()" />
+                    <div class="colorStyle_text_section">
+                        <div class="input_container margint10">
+                            <label for="colorStyle_text_opacity_input">Opacity</label>
+                            <input type="range" id="colorStyle_text_opacity_input" min="0" max="100" step="1" value="100" onchange="colorStyleInputOpacityChange()" />
+                        </div>
+                    </div>
+                    <div class="colorStyle_text_section">
+                        <div class="colorStyle_text_styles_container">
+                            <div id="colorStyle_text_styles_item_bold" class="colorStyle_text_styles_item" onclick="colorStyleInputBold();"><i class="fas fa-bold"></i></div>
+                            <div class="colorStyle_text_styles_item"><i class="fas fa-italic"></i></div>
+                            <div class="colorStyle_text_styles_item"><i class="fas fa-underline"></i></div>
+                            <div class="colorStyle_text_styles_item"><i class="fas fa-strikethrough"></i></div>
+                        </div>
                     </div>
                 </div>
                 <div class="favicon_creator_editor_section_colorStyle_item" data-type="icon">

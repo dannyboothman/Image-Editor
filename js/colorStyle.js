@@ -38,6 +38,12 @@ function buildColorStyleSection(element){
     document.querySelector("#colorStyle_text_size_input").value = element.styles.fontSize;
     document.querySelector("#colorStyle_text_opacity_input").value = element.styles.opacity;
 
+    if (element.styles.bold === true){
+        document.querySelector("#colorStyle_text_styles_item_bold").classList.add("colorStyle_text_styles_item_selected");
+    } else {
+        document.querySelector("#colorStyle_text_styles_item_bold").classList.remove("colorStyle_text_styles_item_selected");
+    }
+
 }
 
 function colorStyleInputChange(){
@@ -89,4 +95,27 @@ function colorStyleInputOpacityChange(){
     element.styles.opacity = opacity;
     opacity = opacity/100;
     document.querySelector(".fcv_item[data-id='"+element.id+"']").style.opacity = opacity;
+}
+
+function colorStyleInputBold(){
+
+    document.querySelector("#colorStyle_text_styles_item_bold").classList.toggle("colorStyle_text_styles_item_selected");
+    console.log(colorStyleElement)
+
+    var element = layers.filter(function(layer) {
+        return layer.id === colorStyleElement;
+    });
+
+    element = element[0];
+
+    if (document.querySelector("#colorStyle_text_styles_item_bold.colorStyle_text_styles_item_selected")){
+        element.styles.bold = true;
+        var bold = "bold";
+    } else {
+        element.styles.bold = false;
+        var bold = "normal";
+    }
+
+    document.querySelector(".fcv_item[data-id='"+element.id+"']").style.fontWeight = bold;
+
 }
