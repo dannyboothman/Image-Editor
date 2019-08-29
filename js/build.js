@@ -76,8 +76,14 @@ function buildText(item){
     if (item.styles.italic === true){
         italic = "italic";
     }
+    var decoration = "none";
+    if (item.styles.decoration === 1){
+        decoration = "underline";
+    } else if (item.styles.decoration == 2){
+        decoration = "line-through";
+    }
 
-    var html = '<div class="fcv_item fcv_item_selected" data-id="' + id + '" style="z-index: ' + zIndex + '; color: ' + color + '; font-size: ' + fontSize + '; opacity: ' + opacity + ' font-weight: ' + bold + '; font-style: ' + italic + '">' + text + '</div>';
+    var html = '<div class="fcv_item fcv_item_selected" data-id="' + id + '" style="z-index: ' + zIndex + '; color: ' + color + '; font-size: ' + fontSize + '; opacity: ' + opacity + ' font-weight: ' + bold + '; font-style: ' + italic + '; text-decoration: ' + decoration + ';">' + text + '</div>';
 
     document.getElementById("favicon_creator_visual").innerHTML += html;
 

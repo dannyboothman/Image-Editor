@@ -50,6 +50,17 @@ function buildColorStyleSection(element){
         document.querySelector("#colorStyle_text_styles_item_italic").classList.remove("colorStyle_text_styles_item_selected");
     }
 
+    if (element.styles.decoration === 1){
+        document.querySelector("#colorStyle_text_styles_item_underline").classList.add("colorStyle_text_styles_item_selected");
+        document.querySelector("#colorStyle_text_styles_item_linethrough").classList.remove("colorStyle_text_styles_item_selected");
+    } else if (element.styles.decoration === 2){
+        document.querySelector("#colorStyle_text_styles_item_linethrough").classList.add("colorStyle_text_styles_item_selected");
+        document.querySelector("#colorStyle_text_styles_item_underline").classList.remove("colorStyle_text_styles_item_selected");
+    } else {
+        document.querySelector("#colorStyle_text_styles_item_underline").classList.remove("colorStyle_text_styles_item_selected");
+        document.querySelector("#colorStyle_text_styles_item_linethrough").classList.remove("colorStyle_text_styles_item_selected");
+    }
+
 }
 
 function colorStyleInputChange(){
@@ -146,5 +157,53 @@ function colorStyleInputItalic(){
     }
 
     document.querySelector(".fcv_item[data-id='"+element.id+"']").style.fontStyle = italic;
+
+}
+
+function colorStyleInputUnderline(){
+
+    document.querySelector("#colorStyle_text_styles_item_underline").classList.toggle("colorStyle_text_styles_item_selected");
+    document.querySelector("#colorStyle_text_styles_item_linethrough").classList.remove("colorStyle_text_styles_item_selected");
+    console.log(colorStyleElement)
+
+    var element = layers.filter(function(layer) {
+        return layer.id === colorStyleElement;
+    });
+
+    element = element[0];
+
+    if (document.querySelector("#colorStyle_text_styles_item_underline.colorStyle_text_styles_item_selected")){
+        element.styles.decoration = 1;
+        var decoration = "underline";
+    } else {
+        element.styles.decoration = 0;
+        var decoration = "none";
+    }
+
+    document.querySelector(".fcv_item[data-id='"+element.id+"']").style.textDecoration = decoration;
+
+}
+
+function colorStyleInputLinethrough(){
+
+    document.querySelector("#colorStyle_text_styles_item_underline").classList.remove("colorStyle_text_styles_item_selected");
+    document.querySelector("#colorStyle_text_styles_item_linethrough").classList.toggle("colorStyle_text_styles_item_selected");
+    console.log(colorStyleElement)
+
+    var element = layers.filter(function(layer) {
+        return layer.id === colorStyleElement;
+    });
+
+    element = element[0];
+
+    if (document.querySelector("#colorStyle_text_styles_item_linethrough.colorStyle_text_styles_item_selected")){
+        element.styles.decoration = 2;
+        var decoration = "line-through";
+    } else {
+        element.styles.decoration = 0;
+        var decoration = "none";
+    }
+
+    document.querySelector(".fcv_item[data-id='"+element.id+"']").style.textDecoration = decoration;
 
 }
