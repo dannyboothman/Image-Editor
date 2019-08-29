@@ -44,6 +44,12 @@ function buildColorStyleSection(element){
         document.querySelector("#colorStyle_text_styles_item_bold").classList.remove("colorStyle_text_styles_item_selected");
     }
 
+    if (element.styles.italic === true){
+        document.querySelector("#colorStyle_text_styles_item_italic").classList.add("colorStyle_text_styles_item_selected");
+    } else {
+        document.querySelector("#colorStyle_text_styles_item_italic").classList.remove("colorStyle_text_styles_item_selected");
+    }
+
 }
 
 function colorStyleInputChange(){
@@ -117,5 +123,28 @@ function colorStyleInputBold(){
     }
 
     document.querySelector(".fcv_item[data-id='"+element.id+"']").style.fontWeight = bold;
+
+}
+
+function colorStyleInputItalic(){
+
+    document.querySelector("#colorStyle_text_styles_item_italic").classList.toggle("colorStyle_text_styles_item_selected");
+    console.log(colorStyleElement)
+
+    var element = layers.filter(function(layer) {
+        return layer.id === colorStyleElement;
+    });
+
+    element = element[0];
+
+    if (document.querySelector("#colorStyle_text_styles_item_italic.colorStyle_text_styles_item_selected")){
+        element.styles.italic = true;
+        var italic = "italic";
+    } else {
+        element.styles.italic = false;
+        var italic = "normal";
+    }
+
+    document.querySelector(".fcv_item[data-id='"+element.id+"']").style.fontStyle = italic;
 
 }

@@ -146,7 +146,8 @@ function modalAddElementFinal(){
                 "color": "#FFFFFF",
                 "fontSize": 100,
                 "opacity": 100,
-                "bold": false
+                "bold": false,
+                "italic": false
             }
             document.getElementById("modal_add_element_text").value = "";
             break;

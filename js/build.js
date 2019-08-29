@@ -70,10 +70,14 @@ function buildText(item){
     opacity = opacity/100;
     var bold = "normal";
     if (item.styles.bold == true){
-        var bold = "bold";
+        bold = "bold";
+    }
+    var italic = "normal";
+    if (item.styles.italic === true){
+        italic = "italic";
     }
 
-    var html = '<div class="fcv_item fcv_item_selected" data-id="' + id + '" style="z-index: ' + zIndex + '; color: ' + color + '; font-size: ' + fontSize + '; opacity: ' + opacity + ' font-weight: ' + bold + '">' + text + '</div>';
+    var html = '<div class="fcv_item fcv_item_selected" data-id="' + id + '" style="z-index: ' + zIndex + '; color: ' + color + '; font-size: ' + fontSize + '; opacity: ' + opacity + ' font-weight: ' + bold + '; font-style: ' + italic + '">' + text + '</div>';
 
     document.getElementById("favicon_creator_visual").innerHTML += html;
 
