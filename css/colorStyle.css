@@ -20,6 +20,11 @@
     border-bottom: none;
 }
 
+#colorStyle_text_styles_label{
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
 .colorStyle_text_styles_container{
     display: flex;
 }
@@ -40,4 +45,20 @@
 
 .colorStyle_text_styles_item:hover, .colorStyle_text_styles_item_selected{
     border-color: #339af0;
+}
+
+#colorStyle_text_color_input_label{
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#colorStyle_text_color_input_container{
+    border: 1px solid #DDD;
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
