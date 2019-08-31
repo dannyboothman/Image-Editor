@@ -103,14 +103,23 @@ const textColorPickr = Pickr.create({
     default: '#FFFFFF'
 });
 
-/*backgroundCanvasColorPickr.on('save', (color, instance) => {
+textColorPickr.on('save', (color, instance) => {
 
     var color = color.toRGBA().toString();
-    canvas.fill.fill = color;
-    document.querySelector('.favicon_creator_editor_canvas_fill_type_item[data-type="color"] .favicon_creator_editor_canvas_fill_type_item_inner').style.backgroundColor = color;
-    document.querySelector("#favicon_creator_visual").style.backgroundColor = color;
-    backgroundCanvasColorPickr.hide()
-});*/
+    
+    console.log(colorStyleElement)
+
+    var element = layers.filter(function(layer) {
+        return layer.id === colorStyleElement;
+    });
+
+    element = element[0];
+
+    element.styles.color = color;
+
+    document.querySelector(".fcv_item[data-id='"+element.id+"']").style.color = color;
+
+});
 
 function colorStyleInputChange(){
     console.log(colorStyleElement)
