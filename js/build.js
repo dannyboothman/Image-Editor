@@ -14,6 +14,8 @@ function build(){
         case "text":
             buildText(lastLayer);
             break;
+        case "image":
+            buildImage(lastLayer);
     }
 
     buildLayers();
@@ -84,6 +86,21 @@ function buildText(item){
     }
 
     var html = '<div class="fcv_item fcv_item_selected" data-id="' + id + '" style="z-index: ' + zIndex + '; color: ' + color + '; font-size: ' + fontSize + '; opacity: ' + opacity + ' font-weight: ' + bold + '; font-style: ' + italic + '; text-decoration: ' + decoration + ';">' + text + '</div>';
+
+    document.getElementById("favicon_creator_visual").innerHTML += html;
+
+}
+
+function buildImage(item){
+
+    console.log(item)
+
+    var id = item.id;
+    var zIndex = item.sequence + 1;
+    var value = item.value;
+
+    var image = '<img src="' + value + '" />';
+    var html = '<div class="fcv_item fcv_item_selected" data-id="' + id + '" style="z-index: ' + zIndex + '; ">' + image + '</div>';
 
     document.getElementById("favicon_creator_visual").innerHTML += html;
 

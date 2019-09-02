@@ -113,7 +113,9 @@ function modalAddElementButton(el, type){
 }
 
 function modalAddElementsChange(e, type){
-
+    console.log("Did this run")
+    console.log(e);
+    console.log(type);
     var finalButton = document.getElementById("modal_add_element_final_button");
     finalButton.classList.add("button_disabled");
 
@@ -125,6 +127,13 @@ function modalAddElementsChange(e, type){
                 if(keyboardCode == 13) {
                     modalAddElementFinal();
                 }
+            }
+            break;
+        case "image":
+            console.log("image");
+            console.log(dropzoneAddElementImage)
+            if (dropzoneAddElementImage.length > 0){
+                finalButton.classList.remove("button_disabled");
             }
             break;
     }
@@ -139,6 +148,8 @@ function modalAddElementFinal(){
 
     console.log(whichElement);
 
+    var styles = { };
+
     switch(whichElement){
         case "text":
             var elementValue = document.getElementById("modal_add_element_text").value.trim();
@@ -151,6 +162,9 @@ function modalAddElementFinal(){
                 "decoration": 0
             }
             document.getElementById("modal_add_element_text").value = "";
+            break;
+        case "image":
+            var elementValue = dropzoneAddElementImage;
             break;
     }
 
