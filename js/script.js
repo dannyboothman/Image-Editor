@@ -154,7 +154,7 @@ function modalAddElementFinal(){
         case "text":
             var elementValue = document.getElementById("modal_add_element_text").value.trim();
             var styles = {
-                "color": "#FFFFFF",
+                "color": "#000000",
                 "fontSize": 100,
                 "opacity": 100,
                 "bold": false,

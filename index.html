@@ -175,47 +175,61 @@
             </div>
 
             <div class="favicon_creator_editor_section" data-editorSection="Canvas">
-                <p>Fill Type:</p>
-                <div id="favicon_creator_editor_canvas_fill_type">
-                    <div class="favicon_creator_editor_canvas_fill_type_item" onclick="changeBackgroundFillType(this);" data-type="none" title="None">
-                        <div class="favicon_creator_editor_canvas_fill_type_item_inner"><i class="fas fa-times"></i></div>
+                <div class="canvas_section">
+                    <p><strong>Fill Type</strong></p>
+                    <div id="favicon_creator_editor_canvas_fill_type">
+                        <div class="favicon_creator_editor_canvas_fill_type_item" onclick="changeBackgroundFillType(this);" data-type="none" title="None">
+                            <div class="favicon_creator_editor_canvas_fill_type_item_inner"><i class="fas fa-times"></i></div>
+                        </div>
+                        <div class="favicon_creator_editor_canvas_fill_type_item favicon_creator_editor_canvas_fill_type_item_selected" onclick="changeBackgroundFillType(this);" data-type="color" title="Color">
+                            <div class="favicon_creator_editor_canvas_fill_type_item_inner">
+                                <div class="canvas-background-color-picker"></div>
+                            </div>
+                        </div>
+                        <div class="favicon_creator_editor_canvas_fill_type_item" onclick="changeBackgroundFillType(this);" data-type="gradient" title="Gradient">
+                            <div class="favicon_creator_editor_canvas_fill_type_item_inner"></div>
+                        </div>
+                        <div class="favicon_creator_editor_canvas_fill_type_item" onclick="changeBackgroundFillType(this);" data-type="pattern" title="Pattern">
+                            <div class="favicon_creator_editor_canvas_fill_type_item_inner">
+                                <i class="fas fa-asterisk"></i>
+                                <i class="fas fa-asterisk"></i>
+                                <i class="fas fa-asterisk"></i>
+                                <i class="fas fa-asterisk"></i>
+                                <i class="fas fa-asterisk"></i>
+                            </div>
+                        </div>
+                        <div class="favicon_creator_editor_canvas_fill_type_item" onclick="changeBackgroundFillType(this);" data-type="image" title="image">
+                            <div class="favicon_creator_editor_canvas_fill_type_item_inner">
+                                <i class="fas fa-image"></i>
+                            </div>
+                        </div>
                     </div>
-                    <div class="favicon_creator_editor_canvas_fill_type_item favicon_creator_editor_canvas_fill_type_item_selected" onclick="changeBackgroundFillType(this);" data-type="color" title="Color">
-                        <div class="favicon_creator_editor_canvas_fill_type_item_inner">
+                    <div id="favicon_creator_editor_canvas_fill_type_container">
+                        <div class="favicon_creator_canvas_fill_type_container_item" data-type="none"></div>
+                        <div class="favicon_creator_canvas_fill_type_container_item favicon_creator_canvas_fill_type_container_item_selected" data-type="color">
                             <div class="canvas-background-color-picker"></div>
                         </div>
-                    </div>
-                    <div class="favicon_creator_editor_canvas_fill_type_item" onclick="changeBackgroundFillType(this);" data-type="gradient" title="Gradient">
-                        <div class="favicon_creator_editor_canvas_fill_type_item_inner"></div>
-                    </div>
-                    <div class="favicon_creator_editor_canvas_fill_type_item" onclick="changeBackgroundFillType(this);" data-type="pattern" title="Pattern">
-                        <div class="favicon_creator_editor_canvas_fill_type_item_inner">
-                            <i class="fas fa-asterisk"></i>
-                            <i class="fas fa-asterisk"></i>
-                            <i class="fas fa-asterisk"></i>
-                            <i class="fas fa-asterisk"></i>
-                            <i class="fas fa-asterisk"></i>
+                        <div class="favicon_creator_canvas_fill_type_container_item" data-type="gradient">
+                            Gradient
                         </div>
-                    </div>
-                    <div class="favicon_creator_editor_canvas_fill_type_item" onclick="changeBackgroundFillType(this);" data-type="image" title="image">
-                        <div class="favicon_creator_editor_canvas_fill_type_item_inner">
-                            <i class="fas fa-image"></i>
+                        <div class="favicon_creator_canvas_fill_type_container_item" data-type="pattern">
+                            Pattern
+                        </div>
+                        <div class="favicon_creator_canvas_fill_type_container_item" data-type="image">
+                            Image
                         </div>
                     </div>
                 </div>
-                <div id="favicon_creator_editor_canvas_fill_type_container">
-                    <div class="favicon_creator_canvas_fill_type_container_item" data-type="none"></div>
-                    <div class="favicon_creator_canvas_fill_type_container_item favicon_creator_canvas_fill_type_container_item_selected" data-type="color">
-                        <div class="canvas-background-color-picker"></div>
-                    </div>
-                    <div class="favicon_creator_canvas_fill_type_container_item" data-type="gradient">
-                        Gradient
-                    </div>
-                    <div class="favicon_creator_canvas_fill_type_container_item" data-type="pattern">
-                        Pattern
-                    </div>
-                    <div class="favicon_creator_canvas_fill_type_container_item" data-type="image">
-                        Image
+                <div class="canvas_section">
+                    <div id="favicon_creator_editor_canvas_size">
+                        <div class="input_container">
+                            <label>Canvas Width</label>
+                            <input id="favicon_creator_editor_canvas_size_width" type="number" value="600" onchange="canvasWidthChange();" />
+                        </div>
+                        <div class="input_container margint10">
+                            <label>Canvas Height</label>
+                            <input type="number" value="400" />
+                        </div>
                     </div>
                 </div>
 

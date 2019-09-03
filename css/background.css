@@ -1,5 +1,11 @@
 
 
+.canvas_section{
+    border-bottom: 1px dashed #ddd;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
 #favicon_creator_editor_canvas_fill_type{
     display: flex;
 }
