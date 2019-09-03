@@ -2,7 +2,7 @@
 var canvas = {
     "fill": {
         "type": "color",
-        "fill": "rgba(51, 154, 240, 1)"
+        "fill": "rgba(255, 255, 255, 1)"
     }
 }
 
@@ -44,8 +44,8 @@ function changeBackgroundFillTypeNone(){
 function changeBackgroundFillTypeColor(){
     var color = document.querySelector('.favicon_creator_editor_canvas_fill_type_item[data-type="color"] .favicon_creator_editor_canvas_fill_type_item_inner').style.backgroundColor;
     if (color == ""){
-        canvas.fill.fill = "rgba(51, 154, 240, 1)";
-        document.querySelector("#favicon_creator_visual").style.backgroundColor = "rgba(51, 154, 240, 1)";
+        canvas.fill.fill = "rgba(255, 255, 255, 1)";
+        document.querySelector("#favicon_creator_visual").style.backgroundColor = "rgba(255, 255, 255, 1)";
     } else {
         canvas.fill.fill = color;
         document.querySelector("#favicon_creator_visual").style.backgroundColor = color;
@@ -90,7 +90,7 @@ const backgroundCanvasColorPickr = Pickr.create({
             save: true
         }
     },
-    default: '#339af0'
+    default: '#FFFFFF'
 });
 
 backgroundCanvasColorPickr.on('save', (color, instance) => {
@@ -101,3 +101,31 @@ backgroundCanvasColorPickr.on('save', (color, instance) => {
     document.querySelector("#favicon_creator_visual").style.backgroundColor = color;
     backgroundCanvasColorPickr.hide()
 });
+
+
+
+function zoomCanvas(which){
+
+    var currentZoom = document.getElementById("favicon_creator_visual_inner_container").style.zoom;
+
+    if (currentZoom === ""){
+        currentZoom = 1;
+    } else {
+        currentZoom = Number(currentZoom);
+    }
+
+    console.log("current Zoom;")
+    console.log(currentZoom);
+
+    if (which === 0){
+        var newZoom = currentZoom - 0.05;
+    } else {
+        var newZoom = currentZoom + 0.05;
+    }
+
+    console.log("new Zoom")
+    console.log(newZoom);
+
+    document.getElementById("favicon_creator_visual_inner_container").style.zoom = newZoom;
+
+}

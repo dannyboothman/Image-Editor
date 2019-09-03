@@ -310,6 +310,33 @@ main{
     background-color: #2a80c7;
 }
 
+#favicon_creator_menu_zoom{
+    display: flex;
+    flex-wrap: nowrap;
+    margin-left: auto;
+    margin-right: 5px;
+    align-items: center;
+    width: 65px;
+    justify-content: space-between;
+}
+
+.favicon_creator_menu_zoom_item{
+    background-color: #226ba7;
+    color: #FFF;
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.favicon_creator_menu_zoom_item:hover{
+    background-color: #339af0;
+}
+
 #favicon_creator{
     height: calc(100vh - 40px);
     width: 100%;
@@ -493,8 +520,8 @@ main{
 
 
 #favicon_creator_visual_inner_container{
-    width: 250px;
-    height: 250px;
+    width: 600px;
+    height: 400px;
     border: 1px dashed #ddd;
 }
 
@@ -504,8 +531,8 @@ main{
 
 #favicon_creator_visual{
     background-color: #FFF;
-    width: 250px;
-    height: 250px;
+    width: 600px;
+    height: 400px;
     position: relative;
 }
 

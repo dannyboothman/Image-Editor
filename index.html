@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Favicon Creator</title>
+    <title>Image Editor</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -21,8 +21,8 @@
         <div id="header_inner">
             <div id="header_left">
                 <a id="logo">
-                    <span id="logo_highlight">F</span>
-                    <span id="logo_title">Favicon Creator</span>
+                    <span id="logo_highlight">I</span>
+                    <span id="logo_title">Image Editor</span>
                 </a>
             </div>
             <div id="header_right">
@@ -76,6 +76,10 @@
                     <div class="favicon_creator_menu_item_dropdown_item">Grid</div>
                 </div>
         </div>
+        <div id="favicon_creator_menu_zoom">
+            <div class="favicon_creator_menu_zoom_item" onclick="zoomCanvas(0)"><i class="fas fa-search-minus"></i></div>
+            <div class="favicon_creator_menu_zoom_item" onclick="zoomCanvas(1)"><i class="fas fa-search-plus"></i></div>
+        </div>
     </div>
     <div id="favicon_creator">
 
@@ -126,7 +130,6 @@
                         <div class="input_container">
                             <label for="colorStyle_text_input">Text</label>
                             <input type="text" id="colorStyle_text_input" onchange="colorStyleInputChange()" onkeydown="colorStyleInputChange();" onkeyup="colorStyleInputChange();" />
-                            <div class="input_helper_text">Recommended: 1 Character</div>
                         </div>
                     </div>
                     <div class="colorStyle_text_section">
@@ -230,7 +233,7 @@
 
         <div id="favicon_creator_visual_outer_container">
             <div id="favicon_creator_visual_inner_container">
-                <div id="favicon_creator_visual" style="background-color: #339af0;"></div>
+                <div id="favicon_creator_visual" style="background-color: #FFFFFF;"></div>
             </div>
         </div>
 
@@ -271,7 +274,6 @@
             <div class="input_container">
                 <label for="modal_add_element_text">Enter Text</label>
                 <input type="text" id="modal_add_element_text" onchange="modalAddElementsChange(event, 'text')" onkeydown="modalAddElementsChange(event, 'text');" onkeyup="modalAddElementsChange(event, 'text');" />
-                <div class="input_helper_text">Recommended: 1 Character</div>
             </div>
         </div>
         <div class="modal_add_element_container" data-modalAddElement="icon">
