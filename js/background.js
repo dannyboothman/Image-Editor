@@ -132,11 +132,20 @@ function zoomCanvas(which){
 
 function canvasWidthChange(){
 
-    console.log("did this run")
     var width = document.getElementById("favicon_creator_editor_canvas_size_width").value;
     canvas.width = width;
 
     document.getElementById("favicon_creator_visual_inner_container").style.width = canvas.width + "px";
     document.getElementById("favicon_creator_visual").style.width = canvas.width + "px";
+
+}
+
+function canvasHightChange(){
+
+    var height = document.getElementById("favicon_creator_editor_canvas_size_height").value;
+    canvas.height = height;
+
+    document.getElementById("favicon_creator_visual_inner_container").style.height = canvas.height + "px";
+    document.getElementById("favicon_creator_visual").style.height = canvas.height + "px";
 
 }
