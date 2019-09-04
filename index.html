@@ -70,12 +70,17 @@
         </div>
         <div class="favicon_creator_menu_item">
             <div class="favicon_creator_menu_item_top">View</div>
-            <div class="favicon_creator_menu_item_dropdown">
+            <div class="favicon_creator_menu_item_dropdown" style="min-width: 150px;">
                 <div class="favicon_creator_menu_item_dropdown_item" onclick="zoomCanvas(1);">Zoom In</div>
                 <div class="favicon_creator_menu_item_dropdown_item" onclick="zoomCanvas(0);">Zoom Out</div>
                 <div class="favicon_creator_menu_item_dropdown_item" onclick="zoomCanvasReset();">Reset Zoom</div>
                 <div class="favicon_creator_menu_item_dropdown_item" onclick="fitToArea();">Fit To Area</div>
-                <div class="favicon_creator_menu_item_dropdown_item">Grid</div>
+                <div class="favicon_creator_menu_item_dropdown_item" data-hasMenu="true" onclick="addGuide();">Add Guide<i class="fas fa-caret-right"></i>
+                    <div class="favicon_creator_menu_item_dropdown_add1">
+                        <div class="favicon_creator_menu_item_dropdown_item" onclick="">Horizontal Guide</div>
+                        <div class="favicon_creator_menu_item_dropdown_item" onclick="">Vertical Guide</div>
+                    </div>
+                </div>
             </div>
         </div>
         <div id="favicon_creator_menu_zoom">
@@ -414,8 +419,7 @@ new Sortable(layerContainer, {
 });
 
 // target elements with the "draggable" class
-interact('.fcv_item.fcv_item_selected')
-  .draggable({
+interact('.fcv_item.fcv_item_selected').draggable({
     // enable inertial throwing
     inertia: true,
     // keep the element within the area of it's parent
@@ -426,14 +430,33 @@ interact('.fcv_item.fcv_item_selected')
     ],
     // enable autoScroll
     autoScroll: true,
-
     // call this function on every dragmove event
     onmove: dragMoveListener,
     // call this function on every dragend event
     onend: function (event) {
       
     }
-  })
+});
+
+interact('.guide.guide_vertical').draggable({
+    // enable inertial throwing
+    lockAxis: 'x',
+    // keep the element within the area of it's parent
+    modifiers: [
+    interact.modifiers.restrictRect({
+        restriction: 'parent'
+      })
+    ],
+    // enable autoScroll
+    autoScroll: true,
+    // call this function on every dragmove event
+    onmove: dragMoveListener,
+    // call this function on every dragend event
+    onend: function (event) {
+      
+    }
+
+});
 
 function dragMoveListener (event) {
   var target = event.target

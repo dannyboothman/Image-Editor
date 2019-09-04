@@ -161,6 +161,14 @@ function fitToArea(){
 
 }
 
+function addGuide(){
+    
+    var guide = '<div class="guide guide_vertical" data-x="100"></div>';
+
+    document.getElementById("favicon_creator_visual_outer_container").innerHTML += guide;
+
+}
+
 function canvasWidthChange(){
 
     var width = document.getElementById("favicon_creator_editor_canvas_size_width").value;

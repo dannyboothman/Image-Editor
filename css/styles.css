@@ -291,7 +291,6 @@ main{
     top: 40px;
     left: 0;
     z-index: 50;
-    min-width: 120px;
     box-shadow: 2px 3px 5px rgba(105, 105, 105, 0.3);
 }
 
@@ -299,11 +298,32 @@ main{
     display: block;
 }
 
+.favicon_creator_menu_item_dropdown_item .favicon_creator_menu_item_dropdown_add1{
+    background-color: #FFF;
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0px;
+    z-index: 50;
+    min-width: 120px;
+    box-shadow: 2px 3px 5px rgba(105, 105, 105, 0.3);
+}
+
+.favicon_creator_menu_item_dropdown_item:hover .favicon_creator_menu_item_dropdown_add1{
+    display: block;
+    color: #6a6969;
+}
+
 .favicon_creator_menu_item_dropdown_item{
     padding: 0 20px;
     transition: 0.4s;
     cursor: pointer;
     white-space: nowrap;
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .favicon_creator_menu_item_dropdown_item:hover{
@@ -848,4 +868,28 @@ main{
 
 #modal_file_open_list{
     display: none;
+}
+
+
+
+/* Guide */
+
+.guide{
+    position: absolute;
+    z-index: 49;
+    background-color: aqua;
+}
+
+.guide.guide_vertical{
+    top: 0px;
+    bottom: 0;
+    width: 1px;
+    transform: translateX(100px);
+}
+
+.guide.guide_horizontal{
+    left: 0;
+    right: 0;
+    height: 1px;
+    transform: translateY(100px);
 }
