@@ -300,7 +300,7 @@ main{
 }
 
 .favicon_creator_menu_item_dropdown_item{
-    padding: 0 20px;
+    padding: 0 10px;
     transition: 0.4s;
     cursor: pointer;
 }

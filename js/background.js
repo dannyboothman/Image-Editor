@@ -114,20 +114,17 @@ function zoomCanvas(which){
         currentZoom = Number(currentZoom);
     }
 
-    console.log("current Zoom;")
-    console.log(currentZoom);
-
     if (which === 0){
         var newZoom = currentZoom - 0.05;
     } else {
         var newZoom = currentZoom + 0.05;
     }
 
-    console.log("new Zoom")
-    console.log(newZoom);
-
     document.getElementById("favicon_creator_visual_inner_container").style.zoom = newZoom;
+}
 
+function zoomCanvasReset(){
+    document.getElementById("favicon_creator_visual_inner_container").style.zoom = 1;
 }
 
 function canvasWidthChange(){
