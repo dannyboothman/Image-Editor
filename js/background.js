@@ -127,6 +127,40 @@ function zoomCanvasReset(){
     document.getElementById("favicon_creator_visual_inner_container").style.zoom = 1;
 }
 
+function fitToArea(){
+
+    var areaHeight = document.getElementById("favicon_creator_visual_outer_container").offsetHeight;
+    var areaWidth = document.getElementById("favicon_creator_visual_outer_container").offsetWidth;
+
+    console.log(areaHeight);
+    console.log(areaWidth);
+
+    var canvasHeight = document.getElementById("favicon_creator_visual_inner_container").offsetHeight;
+    var canvasWidth = document.getElementById("favicon_creator_visual_inner_container").offsetWidth;
+
+    console.log(canvasHeight);
+    console.log(canvasWidth);
+    
+    var timesHeight = Number((areaHeight/canvasHeight).toFixed(2));
+    var timesWidth = Number((areaWidth/canvasWidth).toFixed(2));
+
+    console.log(timesHeight);
+    console.log(timesWidth);
+
+    if (timesHeight > timesWidth){
+        var newZoom = timesWidth;
+        console.log("Times Width");
+    } else {
+        var newZoom = timesHeight;
+        console.log("Times Height");
+    }
+
+    newZoom = newZoom - 0.05;
+
+    document.getElementById("favicon_creator_visual_inner_container").style.zoom = newZoom;
+
+}
+
 function canvasWidthChange(){
 
     var width = document.getElementById("favicon_creator_editor_canvas_size_width").value;
