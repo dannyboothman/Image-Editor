@@ -161,9 +161,17 @@ function fitToArea(){
 
 }
 
-function addGuide(){
+function addGuide(which){
     
-    var guide = '<div class="guide guide_vertical" data-x="100"></div>';
+    if (which === 0){
+        var guideClass = 'guide_horizontal';
+        var guideData = 'data-y="100"';
+    } else {
+        var guideClass = 'guide_vertical';
+        var guideData = 'data-x="100"';
+    }
+
+    var guide = '<div class="guide ' + guideClass + '" ' + guideData + '></div>';
 
     document.getElementById("favicon_creator_visual_outer_container").innerHTML += guide;
 

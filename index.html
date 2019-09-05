@@ -75,10 +75,10 @@
                 <div class="favicon_creator_menu_item_dropdown_item" onclick="zoomCanvas(0);">Zoom Out</div>
                 <div class="favicon_creator_menu_item_dropdown_item" onclick="zoomCanvasReset();">Reset Zoom</div>
                 <div class="favicon_creator_menu_item_dropdown_item" onclick="fitToArea();">Fit To Area</div>
-                <div class="favicon_creator_menu_item_dropdown_item" data-hasMenu="true" onclick="addGuide();">Add Guide<i class="fas fa-caret-right"></i>
+                <div class="favicon_creator_menu_item_dropdown_item" data-hasMenu="true">Add Guide<i class="fas fa-caret-right"></i>
                     <div class="favicon_creator_menu_item_dropdown_add1">
-                        <div class="favicon_creator_menu_item_dropdown_item" onclick="">Horizontal Guide</div>
-                        <div class="favicon_creator_menu_item_dropdown_item" onclick="">Vertical Guide</div>
+                        <div class="favicon_creator_menu_item_dropdown_item" onclick="addGuide(0);">Horizontal Guide</div>
+                        <div class="favicon_creator_menu_item_dropdown_item" onclick="addGuide(1);">Vertical Guide</div>
                     </div>
                 </div>
             </div>
@@ -441,6 +441,26 @@ interact('.fcv_item.fcv_item_selected').draggable({
 interact('.guide.guide_vertical').draggable({
     // enable inertial throwing
     lockAxis: 'x',
+    // keep the element within the area of it's parent
+    modifiers: [
+    interact.modifiers.restrictRect({
+        restriction: 'parent'
+      })
+    ],
+    // enable autoScroll
+    autoScroll: true,
+    // call this function on every dragmove event
+    onmove: dragMoveListener,
+    // call this function on every dragend event
+    onend: function (event) {
+      
+    }
+
+});
+
+interact('.guide.guide_horizontal').draggable({
+    // enable inertial throwing
+    lockAxis: 'y',
     // keep the element within the area of it's parent
     modifiers: [
     interact.modifiers.restrictRect({
