@@ -75,10 +75,12 @@
                 <div class="favicon_creator_menu_item_dropdown_item" onclick="zoomCanvas(0);">Zoom Out</div>
                 <div class="favicon_creator_menu_item_dropdown_item" onclick="zoomCanvasReset();">Reset Zoom</div>
                 <div class="favicon_creator_menu_item_dropdown_item" onclick="fitToArea();">Fit To Area</div>
-                <div class="favicon_creator_menu_item_dropdown_item" data-hasMenu="true">Add Guide<i class="fas fa-caret-right"></i>
+                <div class="favicon_creator_menu_item_dropdown_item" data-hasMenu="true">Guides<i class="fas fa-caret-right"></i>
                     <div class="favicon_creator_menu_item_dropdown_add1">
-                        <div class="favicon_creator_menu_item_dropdown_item" onclick="addGuide(0);">Horizontal Guide</div>
-                        <div class="favicon_creator_menu_item_dropdown_item" onclick="addGuide(1);">Vertical Guide</div>
+                        <div class="favicon_creator_menu_item_dropdown_item" onclick="addGuide(0);">Add Horizontal Guide</div>
+                        <div class="favicon_creator_menu_item_dropdown_item" onclick="addGuide(1);">Add Vertical Guide</div>
+                        <div id="favicon_creator_menu_item_dropdown_item_hideGuides" class="favicon_creator_menu_item_dropdown_item favicon_creator_menu_item_dropdown_item_disabled" onclick="hideGuides(this)">Hide Guides</div>
+                        <div id="favicon_creator_menu_item_dropdown_item_clearGuides" class="favicon_creator_menu_item_dropdown_item favicon_creator_menu_item_dropdown_item_disabled" onclick="clearGuides();">Clear Guides</div>
                     </div>
                 </div>
             </div>

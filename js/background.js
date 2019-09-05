@@ -164,16 +164,54 @@ function fitToArea(){
 function addGuide(which){
     
     if (which === 0){
-        var guideClass = 'guide_horizontal';
+        var guideClass = ' guide_horizontal';
         var guideData = 'data-y="100"';
     } else {
-        var guideClass = 'guide_vertical';
+        var guideClass = ' guide_vertical';
         var guideData = 'data-x="100"';
     }
 
-    var guide = '<div class="guide ' + guideClass + '" ' + guideData + '></div>';
+    var guideHidden = '';
+    if (document.querySelector(".guide_hide")){
+        guideHidden = ' guide_hide';
+    }
+
+    var guide = '<div class="guide' + guideClass + guideHidden +'" ' + guideData + '></div>';
 
     document.getElementById("favicon_creator_visual_outer_container").innerHTML += guide;
+
+    document.getElementById("favicon_creator_menu_item_dropdown_item_hideGuides").classList.remove("favicon_creator_menu_item_dropdown_item_disabled");
+    document.getElementById("favicon_creator_menu_item_dropdown_item_clearGuides").classList.remove("favicon_creator_menu_item_dropdown_item_disabled");
+
+}
+
+function hideGuides(el){
+
+    if (el.innerText === "Hide Guides"){
+        el.innerText = "Show Guides";
+    } else {
+        el.innerText = "Hide Guides";
+    }
+
+    var guides = document.querySelectorAll('.guide');
+
+    for (var i = 0; i < guides.length; i++){
+        guides[i].classList.toggle("guide_hide");
+    }
+
+}
+
+function clearGuides(){
+
+    document.getElementById("favicon_creator_menu_item_dropdown_item_hideGuides").classList.add("favicon_creator_menu_item_dropdown_item_disabled");
+    document.getElementById("favicon_creator_menu_item_dropdown_item_clearGuides").classList.add("favicon_creator_menu_item_dropdown_item_disabled");
+    document.getElementById("favicon_creator_menu_item_dropdown_item_hideGuides").innerText = "Hide Guides";
+
+    var guides = document.querySelectorAll('.guide');
+
+    for (var i = 0; i < guides.length; i++){
+        guides[i].remove();
+    }
 
 }
 

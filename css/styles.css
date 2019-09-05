@@ -326,6 +326,13 @@ main{
     align-items: center;
 }
 
+.favicon_creator_menu_item_dropdown_item.favicon_creator_menu_item_dropdown_item_disabled{
+    cursor: text !important;
+    pointer-events: none !important;
+    color: #ddd !important;
+    background-color: #FFF !important;
+}
+
 .favicon_creator_menu_item_dropdown_item:hover{
     color: #FFF;
     background-color: #2a80c7;
@@ -892,4 +899,8 @@ main{
     right: 0;
     height: 1px;
     transform: translateY(100px);
+}
+
+.guide.guide_hide{
+    display: none;
 }
