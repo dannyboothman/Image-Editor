@@ -524,7 +524,7 @@ main{
 
 .favicon_creator_editor_section{
     padding: 10px;
-    height: calc(100vh - 60px);
+    height: calc(100vh - 100px);
     overflow-y: auto;
     display: none;
 }

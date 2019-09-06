@@ -71,10 +71,14 @@
         <div class="favicon_creator_menu_item">
             <div class="favicon_creator_menu_item_top">View</div>
             <div class="favicon_creator_menu_item_dropdown" style="min-width: 150px;">
-                <div class="favicon_creator_menu_item_dropdown_item" onclick="zoomCanvas(1);">Zoom In</div>
-                <div class="favicon_creator_menu_item_dropdown_item" onclick="zoomCanvas(0);">Zoom Out</div>
-                <div class="favicon_creator_menu_item_dropdown_item" onclick="zoomCanvasReset();">Reset Zoom</div>
-                <div class="favicon_creator_menu_item_dropdown_item" onclick="fitToArea();">Fit To Area</div>
+                <div class="favicon_creator_menu_item_dropdown_item" data-hasMenu="true">Zoom<i class="fas fa-caret-right"></i>
+                    <div class="favicon_creator_menu_item_dropdown_add1">
+                        <div class="favicon_creator_menu_item_dropdown_item" onclick="zoomCanvas(1);">Zoom In</div>
+                        <div class="favicon_creator_menu_item_dropdown_item" onclick="zoomCanvas(0);">Zoom Out</div>
+                        <div class="favicon_creator_menu_item_dropdown_item" onclick="zoomCanvasReset();">Reset Zoom</div>
+                        <div class="favicon_creator_menu_item_dropdown_item" onclick="fitToArea();">Fit To Area</div>
+                    </div>
+                </div>
                 <div class="favicon_creator_menu_item_dropdown_item" data-hasMenu="true">Guides<i class="fas fa-caret-right"></i>
                     <div class="favicon_creator_menu_item_dropdown_add1">
                         <div class="favicon_creator_menu_item_dropdown_item" onclick="addGuide(0);">Add Horizontal Guide</div>
@@ -157,6 +161,12 @@
                         <div class="input_container margint10">
                             <label for="colorStyle_text_opacity_input">Opacity</label>
                             <input type="range" id="colorStyle_text_opacity_input" min="0" max="100" step="1" value="100" onchange="colorStyleInputOpacityChange()" />
+                        </div>
+                    </div>
+                    <div class="colorStyle_text_section">
+                        <div class="input_container margint10">
+                            <label for="colorStyle_text_letterSpacing_input">Letter Spacing</label>
+                            <input type="range" id="colorStyle_text_letterSpacing_input" min="-20" max="100" step="1" value="0" onchange="colorStyleInputLetterSpacingChange()" />
                         </div>
                     </div>
                     <div class="colorStyle_text_section">

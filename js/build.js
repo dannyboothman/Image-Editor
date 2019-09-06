@@ -84,8 +84,9 @@ function buildText(item){
     } else if (item.styles.decoration == 2){
         decoration = "line-through";
     }
+    var letterSpacing = item.styles.letterSpacing + "px";
 
-    var html = '<div class="fcv_item fcv_item_selected" data-id="' + id + '" style="z-index: ' + zIndex + '; color: ' + color + '; font-size: ' + fontSize + '; opacity: ' + opacity + ' font-weight: ' + bold + '; font-style: ' + italic + '; text-decoration: ' + decoration + ';">' + text + '</div>';
+    var html = '<div class="fcv_item fcv_item_selected" data-id="' + id + '" style="z-index: ' + zIndex + '; color: ' + color + '; font-size: ' + fontSize + '; opacity: ' + opacity + ' font-weight: ' + bold + '; font-style: ' + italic + '; text-decoration: ' + decoration + '; letter-spacing: ' + letterSpacing + '">' + text + '</div>';
 
     document.getElementById("favicon_creator_visual").innerHTML += html;
 

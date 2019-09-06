@@ -159,7 +159,8 @@ function modalAddElementFinal(){
                 "opacity": 100,
                 "bold": false,
                 "italic": false,
-                "decoration": 0
+                "decoration": 0,
+                "letterSpacing": 0
             }
             document.getElementById("modal_add_element_text").value = "";
             break;

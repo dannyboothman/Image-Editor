@@ -61,6 +61,8 @@ function buildColorStyleSection(element){
         document.querySelector("#colorStyle_text_styles_item_linethrough").classList.remove("colorStyle_text_styles_item_selected");
     }
 
+    document.querySelector("#colorStyle_text_letterSpacing_input").value = element.styles.letterSpacing;
+
 }
 
 // Simple example, see optional options for more configuration.
@@ -170,6 +172,21 @@ function colorStyleInputOpacityChange(){
     element.styles.opacity = opacity;
     opacity = opacity/100;
     document.querySelector(".fcv_item[data-id='"+element.id+"']").style.opacity = opacity;
+}
+
+function colorStyleInputLetterSpacingChange(){
+    console.log(colorStyleElement);
+
+    var element = layers.filter(function(layer) {
+        return layer.id === colorStyleElement;
+    });
+
+    element = element[0];
+
+    var letterSpacing = document.querySelector("#colorStyle_text_letterSpacing_input").value;
+    element.styles.letterSpacing = letterSpacing;
+    letterSpacing = letterSpacing + "px";
+    document.querySelector(".fcv_item[data-id='"+element.id+"']").style.letterSpacing = letterSpacing;
 }
 
 function colorStyleInputBold(){
