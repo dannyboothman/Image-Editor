@@ -28,6 +28,9 @@ function changeBackgroundFillType(el){
         case "color":
             changeBackgroundFillTypeColor();
             break;
+        case "gradient":
+            changeBackgroundFillTypeGradient();
+            break;
     }
 
     document.querySelector(".favicon_creator_canvas_fill_type_container_item[data-type='"+fillType+"']").classList.add("favicon_creator_canvas_fill_type_container_item_selected");
@@ -35,13 +38,16 @@ function changeBackgroundFillType(el){
 
 function changeBackgroundFillTypeNone(){
 
+    document.querySelector("#favicon_creator_visual").style.background = "";
     canvas.fill.fill = "rgba(0, 0, 0, 0)";
     document.getElementById("favicon_creator_visual").style.backgroundColor = "rgba(0, 0, 0, 0)";
     document.getElementById("favicon_creator_visual_inner_container").classList.add("favicon_creator_visual_no_bg");
 
+    
 }
 
 function changeBackgroundFillTypeColor(){
+    document.querySelector("#favicon_creator_visual").style.background = "";
     var color = document.querySelector('.favicon_creator_editor_canvas_fill_type_item[data-type="color"] .favicon_creator_editor_canvas_fill_type_item_inner').style.backgroundColor;
     if (color == ""){
         canvas.fill.fill = "rgba(255, 255, 255, 1)";
@@ -52,8 +58,7 @@ function changeBackgroundFillTypeColor(){
     }
 }
 
-
-// Simple example, see optional options for more configuration.
+// 1 Color Fill
 const backgroundCanvasColorPickr = Pickr.create({
     el: '.canvas-background-color-picker',
     theme: 'monolith', // or 'monolith', or 'nano'
@@ -95,13 +100,137 @@ const backgroundCanvasColorPickr = Pickr.create({
 
 backgroundCanvasColorPickr.on('save', (color, instance) => {
 
+    document.querySelector("#favicon_creator_visual").style.background = "";
     var color = color.toRGBA().toString();
     canvas.fill.fill = color;
     document.querySelector('.favicon_creator_editor_canvas_fill_type_item[data-type="color"] .favicon_creator_editor_canvas_fill_type_item_inner').style.backgroundColor = color;
     document.querySelector("#favicon_creator_visual").style.backgroundColor = color;
+    
     backgroundCanvasColorPickr.hide()
 });
 
+
+/* Gradient */
+function changeBackgroundFillTypeGradient(){
+    var color = document.querySelector('.favicon_creator_editor_canvas_fill_type_item[data-type="gradient"] .favicon_creator_editor_canvas_fill_type_item_inner').style.background;
+    console.log(color);
+    if (color == ""){
+        canvas.fill.fill = "linear-gradient(90deg, rgba(0, 58, 105,1) 0%, rgba(51,154,240,1) 100%)";
+        document.querySelector("#favicon_creator_visual").style.background = canvas.fill.fill;
+    } else {
+        canvas.fill.fill = color;
+        document.querySelector("#favicon_creator_visual").style.background = color;
+    }
+}
+
+const backgroundCanvasColorPickrGradient1 = Pickr.create({
+    el: '#favicon_creator_cavas_fill_type_gradient_color1',
+    theme: 'monolith', // or 'monolith', or 'nano'
+    swatches: [
+        'rgba(244, 67, 54, 1)',
+        'rgba(233, 30, 99, 0.95)',
+        'rgba(156, 39, 176, 0.9)',
+        'rgba(103, 58, 183, 0.85)',
+        'rgba(63, 81, 181, 0.8)',
+        'rgba(33, 150, 243, 0.75)',
+        'rgba(3, 169, 244, 0.7)',
+        'rgba(0, 188, 212, 0.7)',
+        'rgba(0, 150, 136, 0.75)',
+        'rgba(76, 175, 80, 0.8)',
+        'rgba(139, 195, 74, 0.85)',
+        'rgba(205, 220, 57, 0.9)',
+        'rgba(255, 235, 59, 0.95)',
+        'rgba(255, 193, 7, 1)'
+    ],
+    components: {
+        // Main components
+        preview: true,
+        opacity: true,
+        hue: true,
+        // Input / output Options
+        interaction: {
+            hex: true,
+            rgba: true,
+            hsla: true,
+            hsva: true,
+            cmyk: true,
+            input: true,
+            clear: false,
+            save: true
+        }
+    },
+    default: 'rgba(0, 58, 105,1)'
+});
+
+backgroundCanvasColorPickrGradient1.on('save', (color, instance) => {
+
+    var color1 = color.toRGBA().toString();
+    var color2 = backgroundCanvasColorPickrGradient2._color.toRGBA().toString();
+    //canvas.fill.fill = color;
+    //document.querySelector('.favicon_creator_editor_canvas_fill_type_item[data-type="color"] .favicon_creator_editor_canvas_fill_type_item_inner').style.backgroundColor = color;
+    //document.querySelector("#favicon_creator_visual").style.backgroundColor = color;
+
+    canvas.fill.fill = 'linear-gradient(90deg, '+color1+' 0%, '+color2+' 100%)';
+
+    document.getElementById("favicon_creator_canvas_fill_type_gradient_example").style.background = canvas.fill.fill;
+    document.querySelector('.favicon_creator_editor_canvas_fill_type_item[data-type="gradient"] .favicon_creator_editor_canvas_fill_type_item_inner').style.background = canvas.fill.fill;
+    document.querySelector("#favicon_creator_visual").style.background = canvas.fill.fill;
+
+    backgroundCanvasColorPickrGradient1.hide();
+});
+
+const backgroundCanvasColorPickrGradient2 = Pickr.create({
+    el: '#favicon_creator_cavas_fill_type_gradient_color2',
+    theme: 'monolith', // or 'monolith', or 'nano'
+    swatches: [
+        'rgba(244, 67, 54, 1)',
+        'rgba(233, 30, 99, 0.95)',
+        'rgba(156, 39, 176, 0.9)',
+        'rgba(103, 58, 183, 0.85)',
+        'rgba(63, 81, 181, 0.8)',
+        'rgba(33, 150, 243, 0.75)',
+        'rgba(3, 169, 244, 0.7)',
+        'rgba(0, 188, 212, 0.7)',
+        'rgba(0, 150, 136, 0.75)',
+        'rgba(76, 175, 80, 0.8)',
+        'rgba(139, 195, 74, 0.85)',
+        'rgba(205, 220, 57, 0.9)',
+        'rgba(255, 235, 59, 0.95)',
+        'rgba(255, 193, 7, 1)'
+    ],
+    components: {
+        // Main components
+        preview: true,
+        opacity: true,
+        hue: true,
+        // Input / output Options
+        interaction: {
+            hex: true,
+            rgba: true,
+            hsla: true,
+            hsva: true,
+            cmyk: true,
+            input: true,
+            clear: false,
+            save: true
+        }
+    },
+    default: 'rgba(51,154,240,1)'
+});
+
+backgroundCanvasColorPickrGradient2.on('save', (color, instance) => {
+
+    var color2 = color.toRGBA().toString();
+    var color1 = backgroundCanvasColorPickrGradient1._color.toRGBA().toString();
+    
+    canvas.fill.fill = 'linear-gradient(90deg, '+color1+' 0%, '+color2+' 100%)';
+
+    document.getElementById("favicon_creator_canvas_fill_type_gradient_example").style.background = canvas.fill.fill;
+    document.querySelector('.favicon_creator_editor_canvas_fill_type_item[data-type="gradient"] .favicon_creator_editor_canvas_fill_type_item_inner').style.background = canvas.fill.fill;
+    document.querySelector("#favicon_creator_visual").style.background = canvas.fill.fill;
+
+    backgroundCanvasColorPickrGradient2.hide();
+});
 
 
 function zoomCanvas(which){

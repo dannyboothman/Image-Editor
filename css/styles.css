@@ -449,12 +449,6 @@ main{
     }
 }
 
-@media only screen and (min-width:900px){
-    #favicon_creator_editor_container.favicon_creator_editor_active{
-        max-width: 400px;
-    }
-}
-
 #favicon_creator_editor_header{
     display: flex;
     flex-wrap: nowrap;
@@ -512,13 +506,6 @@ main{
     #favicon_creator_visual_outer_container.favicon_creator_visual_outer_active{
         left: 380px;
         width: calc(100% - 380px);
-    }
-}
-
-@media only screen and (min-width:900px){
-    #favicon_creator_visual_outer_container.favicon_creator_visual_outer_active{
-        left: 480px;
-        width: calc(100% - 480px);
     }
 }
 
