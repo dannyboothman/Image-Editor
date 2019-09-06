@@ -166,11 +166,13 @@ backgroundCanvasColorPickrGradient1.on('save', (color, instance) => {
 
     var color1 = color.toRGBA().toString();
     var color2 = backgroundCanvasColorPickrGradient2._color.toRGBA().toString();
-    //canvas.fill.fill = color;
-    //document.querySelector('.favicon_creator_editor_canvas_fill_type_item[data-type="color"] .favicon_creator_editor_canvas_fill_type_item_inner').style.backgroundColor = color;
-    //document.querySelector("#favicon_creator_visual").style.backgroundColor = color;
 
-    canvas.fill.fill = 'linear-gradient(90deg, '+color1+' 0%, '+color2+' 100%)';
+    var angle = canvas.fill.angle;
+    if (angle === undefined){
+        angle = 90;
+    }
+
+    canvas.fill.fill = 'linear-gradient('+angle+'deg, '+color1+' 0%, '+color2+' 100%)';
 
     document.getElementById("favicon_creator_canvas_fill_type_gradient_example").style.background = canvas.fill.fill;
     document.querySelector('.favicon_creator_editor_canvas_fill_type_item[data-type="gradient"] .favicon_creator_editor_canvas_fill_type_item_inner').style.background = canvas.fill.fill;
@@ -223,7 +225,12 @@ backgroundCanvasColorPickrGradient2.on('save', (color, instance) => {
     var color2 = color.toRGBA().toString();
     var color1 = backgroundCanvasColorPickrGradient1._color.toRGBA().toString();
     
-    canvas.fill.fill = 'linear-gradient(90deg, '+color1+' 0%, '+color2+' 100%)';
+    var angle = canvas.fill.angle;
+    if (angle === undefined){
+        angle = 90;
+    }
+
+    canvas.fill.fill = 'linear-gradient('+angle+'deg, '+color1+' 0%, '+color2+' 100%)';
 
     document.getElementById("favicon_creator_canvas_fill_type_gradient_example").style.background = canvas.fill.fill;
     document.querySelector('.favicon_creator_editor_canvas_fill_type_item[data-type="gradient"] .favicon_creator_editor_canvas_fill_type_item_inner').style.background = canvas.fill.fill;
@@ -231,6 +238,21 @@ backgroundCanvasColorPickrGradient2.on('save', (color, instance) => {
 
     backgroundCanvasColorPickrGradient2.hide();
 });
+
+
+function changeBackgroundGradientAngle(){
+
+    canvas.fill.angle = document.getElementById("favicon_creator_cavas_fill_type_gradient_angle").value;
+    var color1 = backgroundCanvasColorPickrGradient1._color.toRGBA().toString();
+    var color2 = backgroundCanvasColorPickrGradient2._color.toRGBA().toString();
+
+    canvas.fill.fill = 'linear-gradient('+canvas.fill.angle+'deg, '+color1+' 0%, '+color2+' 100%)';
+
+    document.getElementById("favicon_creator_canvas_fill_type_gradient_example").style.background = canvas.fill.fill;
+    document.querySelector('.favicon_creator_editor_canvas_fill_type_item[data-type="gradient"] .favicon_creator_editor_canvas_fill_type_item_inner').style.background = canvas.fill.fill;
+    document.querySelector("#favicon_creator_visual").style.background = canvas.fill.fill;
+
+}
 
 
 function zoomCanvas(which){
