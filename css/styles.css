@@ -74,7 +74,7 @@ a{
     font-weight: bold;
 }
 
-.input_container input{
+.input_container input, .input_container select{
     border-radius: 4px;
     height: 40px;
     border: 1px solid #ddd;
