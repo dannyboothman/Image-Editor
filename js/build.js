@@ -209,11 +209,19 @@ function addContextMenus(){
         contextMenuItems[i].addEventListener('contextmenu', function(ev) {
             ev.preventDefault();
 
+            selectElementItem(this.getAttribute("data-id"));
+
             var contextMenu = document.querySelector('.context_menu[data-contextMenu="element-item"]');
             contextMenu.classList.add('context_menu_active');
             contextMenu.setAttribute("data-id", this.getAttribute("data-id"));
             contextMenu.style.left = (ev.pageX + 5) + "px";
             contextMenu.style.top = ev.pageY + "px";
+
+            if (layers.length > 1){
+                document.getElementById("context_menu_item_arrange").classList.remove("context_menu_item_disabled");
+            } else {
+                document.getElementById("context_menu_item_arrange").classList.add("context_menu_item_disabled");
+            }
 
             return false;
         }, false);

@@ -425,6 +425,14 @@
 <div class="context_menu" data-contextMenu="element-item">
     <div class="context_menu_item" onclick="contextCopyElementItem()">Copy</div>
     <div class="context_menu_item" onclick="contextEditElementItem()">Edit</div>
+    <div id="context_menu_item_arrange" class="context_menu_item context_menu_item_disabled" data-hasDropdown="true">Arrange<i class="fas fa-caret-right context_menu_item_right_icon"></i>
+        <div class="context_menu_item_dropdown">
+            <div class="context_menu_item">Bring to Front</div>
+            <div class="context_menu_item">Bring Foward</div>
+            <div class="context_menu_item">Send Backward</div>
+            <div class="context_menu_item">Send to Back</div>
+        </div>
+    </div>
     <div class="context_menu_item" onclick="contextDeleteElementItem();">Delete</div>
 </div>
 

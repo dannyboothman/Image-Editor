@@ -433,7 +433,7 @@ main{
     background-color: #FFF;
     position: absolute;
     top: 0; left: -100%; bottom: 0;
-    z-index: 2;
+    z-index: 200;
     transition: 0.4s;
 }
 
@@ -785,6 +785,7 @@ main{
     background-color: #FFF;
     box-shadow: 0 0 5px #cecece;
     min-width: 120px;
+    z-index: 201;
 }
 
 .context_menu.context_menu_active{
@@ -796,12 +797,50 @@ main{
     line-height: 30px;
     padding: 0px 20px;
     cursor: pointer;
+    position: relative;
+    white-space: nowrap;
+}
+
+.context_menu_item.context_menu_item_disabled{
+    cursor: text !important;
+    pointer-events: none !important;
+    color: #ddd !important;
+    background-color: #FFF !important;
+}
+
+.context_menu_item_right_icon{
+    float: right;
+    line-height: 30px !important;
 }
 
 .context_menu_item:hover{
     background-color: #339af0;
     color: #FFF;
 }
+
+.context_menu_item_dropdown{
+    position: absolute;
+    left: 100%;
+    display: none;
+    top: 0;
+    background-color: #FFF;
+    box-shadow: 0 0 5px #cecece;
+    min-width: 120px;
+}
+
+.context_menu_item_dropdown .context_menu_item{
+    color: #6a6969;
+    line-height: 30px;
+}
+
+.context_menu_item_dropdown .context_menu_item:hover{
+    color: #FFFFFF;
+}
+
+.context_menu_item:hover .context_menu_item_dropdown{
+    display: block;
+}
+
 
 
 #file_save_overwrite_container{
