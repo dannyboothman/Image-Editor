@@ -266,9 +266,23 @@ function contextBringToFront(){
 
     var clone = item.cloneNode(true);
     item.remove();
-    console.log(clone)
 
     document.querySelector("#favicon_creator_elements_inner").prepend(clone);
+
+    sortLayerSequence();
+    addContextMenus();
+
+}
+
+function contextSendToBack(){
+
+    var id = document.querySelector(".context_menu.context_menu_active").getAttribute("data-id");
+    var item = document.querySelector(".favicon_creator_elements_item[data-id='"+id+"']");
+
+    var clone = item.cloneNode(true);
+    item.remove();
+
+    document.querySelector("#favicon_creator_elements_inner").append(clone);
 
     sortLayerSequence();
     addContextMenus();
