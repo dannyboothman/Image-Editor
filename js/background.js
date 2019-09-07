@@ -298,11 +298,14 @@ function changeBackgroundGradientStyle(){
     var color1 = backgroundCanvasColorPickrGradient1._color.toRGBA().toString();
     var color2 = backgroundCanvasColorPickrGradient2._color.toRGBA().toString();
 
+    var angleContainer = document.getElementById("favicon_creator_canvas_fill_type_gradient_angle_container");
 
     if (canvas.fill.gradientStyle === 'linear'){
         var gradientStyle = 'linear-gradient('+angle+'deg, ';
+        angleContainer.style.display = "block";
     } else if (canvas.fill.gradientStyle === 'radial'){
         var gradientStyle = 'radial-gradient(';
+        angleContainer.style.display = "none";
     }
 
     canvas.fill.fill = gradientStyle+color1+' 0%, '+color2+' 100%)';
