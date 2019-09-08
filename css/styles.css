@@ -290,7 +290,7 @@ main{
     position: absolute;
     top: 40px;
     left: 0;
-    z-index: 50;
+    z-index: 202;
     box-shadow: 2px 3px 5px rgba(105, 105, 105, 0.3);
 }
 
@@ -377,7 +377,7 @@ main{
 #favicon_creator_nav_container{
     position: absolute;
     top: 0; left: 0; bottom: 0;
-    z-index: 3;
+    z-index: 201;
     width: 80px;
     min-height: 100vh;
     background-color: #339af0;

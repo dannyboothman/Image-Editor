@@ -54,6 +54,8 @@ function buildLayers(){
         html += '</div>';
 
     document.getElementById("favicon_creator_elements_inner").innerHTML += html;
+    var theItem = document.querySelector(".favicon_creator_elements_item[data-id='"+lastLayer.id+"']");
+    document.getElementById("favicon_creator_elements_inner").prepend(theItem);
 
     addContextMenus();
 
@@ -104,6 +106,7 @@ function buildImage(item){
     var html = '<div class="fcv_item fcv_item_selected" data-id="' + id + '" style="z-index: ' + zIndex + '; ">' + image + '</div>';
 
     document.getElementById("favicon_creator_visual").innerHTML += html;
+    sortLayerSequence();
 
 }
 
@@ -129,7 +132,7 @@ function sortLayerSequence(){
         });
         theLayer[0].sequence = i;
 
-        document.querySelector(".fcv_item[data-id='"+id+"']").style.zIndex = (i + 1);
+        document.querySelector(".fcv_item[data-id='"+id+"']").style.zIndex = (layers.length - i);
 
     }
 
@@ -232,12 +235,12 @@ function addContextMenus(){
 
                 var sequence = theLayer[0].sequence;
                 
-                if (sequence != 0){
+                if (sequence == 0){
                     document.getElementById("context_menu_item_arrange1").classList.remove("context_menu_item_disabled");
                     document.getElementById("context_menu_item_arrange2").classList.remove("context_menu_item_disabled");
                 }
 
-                if (sequence != (layers.length - 1)){
+                if (sequence == (layers.length - 1)){
                     document.getElementById("context_menu_item_arrange3").classList.remove("context_menu_item_disabled");
                     document.getElementById("context_menu_item_arrange4").classList.remove("context_menu_item_disabled");
                 }
