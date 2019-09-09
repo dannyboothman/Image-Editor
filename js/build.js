@@ -130,7 +130,7 @@ function sortLayerSequence(){
         var theLayer = layers.filter(function(layer) {
             return layer.id === id;
         });
-        theLayer[0].sequence = i;
+        theLayer[0].sequence = ((layers.length - i) - 1);
 
         document.querySelector(".fcv_item[data-id='"+id+"']").style.zIndex = (layers.length - i);
 
@@ -226,7 +226,7 @@ function addContextMenus(){
 
                 var arrangeItems = document.querySelectorAll("#context_menu_item_arrange .context_menu_item");
                 for (var i = 0; i < arrangeItems.length; i++){
-                    arrangeItems[i].classList.add("context_menu_item_disabled");
+                    arrangeItems[i].classList.remove("context_menu_item_disabled");
                 }
 
                 var theLayer = layers.filter(function(layer) {
@@ -234,15 +234,17 @@ function addContextMenus(){
                 });
 
                 var sequence = theLayer[0].sequence;
+                console.log("sequence: " + sequence);
+                console.log("layers.length - 1: " + (layers.length - 1))
                 
                 if (sequence == 0){
-                    document.getElementById("context_menu_item_arrange1").classList.remove("context_menu_item_disabled");
-                    document.getElementById("context_menu_item_arrange2").classList.remove("context_menu_item_disabled");
+                    document.getElementById("context_menu_item_arrange3").classList.add("context_menu_item_disabled");
+                    document.getElementById("context_menu_item_arrange4").classList.add("context_menu_item_disabled");
                 }
 
                 if (sequence == (layers.length - 1)){
-                    document.getElementById("context_menu_item_arrange3").classList.remove("context_menu_item_disabled");
-                    document.getElementById("context_menu_item_arrange4").classList.remove("context_menu_item_disabled");
+                    document.getElementById("context_menu_item_arrange1").classList.add("context_menu_item_disabled");
+                    document.getElementById("context_menu_item_arrange2").classList.add("context_menu_item_disabled");
                 }
 
             } else {
