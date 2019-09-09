@@ -234,8 +234,6 @@ function addContextMenus(){
                 });
 
                 var sequence = theLayer[0].sequence;
-                console.log("sequence: " + sequence);
-                console.log("layers.length - 1: " + (layers.length - 1))
                 
                 if (sequence == 0){
                     document.getElementById("context_menu_item_arrange3").classList.add("context_menu_item_disabled");
@@ -299,7 +297,18 @@ function contextBringToFront(){
 
     sortLayerSequence();
     addContextMenus();
+}
 
+function contextBringForward(){
+    var id = document.querySelector(".context_menu.context_menu_active").getAttribute("data-id");
+    var item = document.querySelector(".favicon_creator_elements_item[data-id='"+id+"']");
+
+    if(item.previousElementSibling){
+        item.parentNode.insertBefore(item, item.previousElementSibling);
+    }
+
+    sortLayerSequence();
+    addContextMenus();
 }
 
 function contextSendToBack(){
@@ -314,5 +323,16 @@ function contextSendToBack(){
 
     sortLayerSequence();
     addContextMenus();
+}
 
+function contextSendBackward(){
+    var id = document.querySelector(".context_menu.context_menu_active").getAttribute("data-id");
+    var item = document.querySelector(".favicon_creator_elements_item[data-id='"+id+"']");
+
+    if(item.nextElementSibling){
+        item.parentNode.insertBefore(item.nextElementSibling, item);
+    }
+
+    sortLayerSequence();
+    addContextMenus();
 }
