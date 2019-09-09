@@ -432,19 +432,68 @@ function clearGuides(){
 function canvasWidthChange(){
 
     var width = document.getElementById("favicon_creator_editor_canvas_size_width").value;
+    if (canvas.width != null){
+        var originalWidth = canvas.width;
+    } else {
+        var originalWidth = 600;
+    }
+    
     canvas.width = width;
 
     document.getElementById("favicon_creator_visual_inner_container").style.width = canvas.width + "px";
     document.getElementById("favicon_creator_visual").style.width = canvas.width + "px";
+
+    var lock = document.querySelector("#favicon_creator_edit_canvas_size_lock").getAttribute("data-lock");
+    if (lock === "true"){
+        var height = document.getElementById("favicon_creator_editor_canvas_size_height").value;
+        canvas.height = height;
+        var newHeight = width * height/originalWidth;
+        newHeight = Math.round(newHeight);
+        canvas.height = newHeight;
+        document.getElementById("favicon_creator_editor_canvas_size_height").value = newHeight;
+        document.getElementById("favicon_creator_visual_inner_container").style.height = canvas.height + "px";
+        document.getElementById("favicon_creator_visual").style.height = canvas.height + "px";
+    }
 
 }
 
 function canvasHightChange(){
 
     var height = document.getElementById("favicon_creator_editor_canvas_size_height").value;
+    if (canvas.height != null){
+        var originalHeight = canvas.height;
+    } else {
+        var originalHeight = 400;
+    }
     canvas.height = height;
 
     document.getElementById("favicon_creator_visual_inner_container").style.height = canvas.height + "px";
     document.getElementById("favicon_creator_visual").style.height = canvas.height + "px";
+
+    var lock = document.querySelector("#favicon_creator_edit_canvas_size_lock").getAttribute("data-lock");
+    if (lock === "true"){
+        var width = document.getElementById("favicon_creator_editor_canvas_size_width").value;
+        canvas.width = width;
+        var newWidth = height * width/originalHeight;
+        newWidth = Math.round(newWidth);
+        canvas.width = newWidth;
+        document.getElementById("favicon_creator_editor_canvas_size_width").value = newWidth;
+        document.getElementById("favicon_creator_visual_inner_container").style.width = canvas.width + "px";
+        document.getElementById("favicon_creator_visual").style.width = canvas.width + "px";
+    }
+
+}
+
+function canvasWidthHeightLockChange(){
+
+    document.querySelector("#favicon_creator_edit_canvas_size_lock i").classList.toggle("fa-lock");
+    document.querySelector("#favicon_creator_edit_canvas_size_lock i").classList.toggle("fa-unlock");
+
+    var lock = document.querySelector("#favicon_creator_edit_canvas_size_lock").getAttribute("data-lock");
+    if (lock === "false"){
+        document.querySelector("#favicon_creator_edit_canvas_size_lock").setAttribute("data-lock", "true");
+    } else {
+        document.querySelector("#favicon_creator_edit_canvas_size_lock").setAttribute("data-lock", "false");
+    }
 
 }

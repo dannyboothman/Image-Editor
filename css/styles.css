@@ -6,6 +6,12 @@ body{
     color: #6a6969;
 }
 
+input, textarea{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
 a{
     color: #339af0;
     transition: 0.4s;

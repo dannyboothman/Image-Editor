@@ -261,11 +261,14 @@
                 <div class="canvas_section">
                     <div id="favicon_creator_editor_canvas_size">
                         <div class="input_container">
-                            <label>Canvas Width</label>
+                            <label>Width</label>
                             <input id="favicon_creator_editor_canvas_size_width" type="number" value="600" onchange="canvasWidthChange();" />
                         </div>
-                        <div class="input_container margint10">
-                            <label>Canvas Height</label>
+                        <div id="favicon_creator_edit_canvas_size_lock" data-lock="false" onclick="canvasWidthHeightLockChange();">
+                            <i class="fas fa-unlock"></i>
+                        </div>
+                        <div class="input_container">
+                            <label>Height</label>
                             <input id="favicon_creator_editor_canvas_size_height" type="number" value="400" onchange="canvasHightChange();" />
                         </div>
                     </div>
