@@ -542,33 +542,31 @@ window.dragMoveListener = dragMoveListener;
 Dropzone.autoDiscover = false;
 var myDropzone;
 var dropzoneAddElementImage;
+var dropzoneAddElementImageName;
 
 myDropzone = new Dropzone("div#drop-target",{
-            url: "#",
-            maxFilesize: 5,
-            autoProcessQueue: true,
-            maxFiles: 1,
-            acceptedFiles: "image/jpeg,image/png",
-            method: "put",
-            accept: function (file, done) {
-                myDropzone = this;
-                dropzoneAddElementImage = file;
-                var reader  = new FileReader();
-                // it's onload event and you forgot (parameters)
-                reader.onload = function(e)  {
-                    console.log(e)
-                    // the result image data
-                    dropzoneAddElementImage = e.target.result;
-                    console.log(dropzoneAddElementImage);
-                    document.querySelector(".dropzone").classList.add("dropzone_accepted_ready");
-                    modalAddElementsChange(null, "image");
-                }
-                // you have to declare the file loading
-                reader.readAsDataURL(file);
-                
-
-            }
-        });
+    url: "#",
+    maxFilesize: 5,
+    autoProcessQueue: true,
+    maxFiles: 1,
+    acceptedFiles: "image/jpeg,image/png",
+    method: "put",
+    accept: function (file, done) {
+        myDropzone = this;
+        dropzoneAddElementImage = file;
+        dropzoneAddElementImageName = file.name;
+        var reader  = new FileReader();
+        // it's onload event and you forgot (parameters)
+        reader.onload = function(e)  {
+            // the result image data
+            dropzoneAddElementImage = e.target.result;
+            document.querySelector(".dropzone").classList.add("dropzone_accepted_ready");
+            modalAddElementsChange(null, "image");
+        }
+        // you have to declare the file loading
+        reader.readAsDataURL(file);
+    }
+});
 
 </script>
 </body>

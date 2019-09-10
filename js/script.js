@@ -153,6 +153,7 @@ function modalAddElementFinal(){
     switch(whichElement){
         case "text":
             var elementValue = document.getElementById("modal_add_element_text").value.trim();
+            var elementName = null;
             var styles = {
                 "color": "#000000",
                 "fontSize": 100,
@@ -166,6 +167,9 @@ function modalAddElementFinal(){
             break;
         case "image":
             var elementValue = dropzoneAddElementImage;
+            var elementName = dropzoneAddElementImageName;
+            elementName = elementName.replace(/.jpeg/gmi, "");
+            elementName = elementName.replace(/.png/gmi, "");
             break;
     }
 
@@ -173,7 +177,7 @@ function modalAddElementFinal(){
         "id": guid(),
         "type": whichElement,
         "value": elementValue,
-        "name": null,
+        "name": elementName,
         "sequence": layers.length,
         "styles": styles
     }

@@ -45,10 +45,16 @@ function buildLayers(){
 
     var lastLayer = layers[layers.length - 1];
 
+    if (lastLayer.name != null){
+        var name = lastLayer.name;
+    } else {
+        var name = lastLayer.value;
+    }
+
     var html = '<div class="favicon_creator_elements_item favicon_creator_elements_item_selected" data-id="'+lastLayer.id+'" data-contentMenuItem="true">';
         html += '<div class="favicon_creator_elements_item_move '+ hideMove +'"><i class="fas fa-arrows-alt-v"></i></div>';
         html += '<div class="favicon_creator_elements_item_eye" onclick="selectElementItem(\''+lastLayer.id+'\'); toggleElementItemVisibility(this, \''+lastLayer.id+'\')"><i class="fas fa-eye"></i></div>';
-        html += '<div class="favicon_creator_elements_item_name" onclick="selectElementItem(\''+lastLayer.id+'\');" ondblclick="changeElementItemNameDoubleClick(\''+lastLayer.id+'\');" onblur="changeElementItemNameBlur(\''+lastLayer.id+'\');" data-id="'+lastLayer.id+'">' + lastLayer.value + '</div>';
+        html += '<div class="favicon_creator_elements_item_name" onclick="selectElementItem(\''+lastLayer.id+'\');" ondblclick="changeElementItemNameDoubleClick(\''+lastLayer.id+'\');" onblur="changeElementItemNameBlur(\''+lastLayer.id+'\');" data-id="'+lastLayer.id+'">' + name + '</div>';
         html += '<div class="favicon_creator_elements_item_edit" onclick="selectElementItem(\''+lastLayer.id+'\'); editorNav(\'Edit\');"><i class="fas fa-pencil-alt"></i></div>';
         html += '<div class="favicon_creator_elements_item_delete" onclick="deleteElementItem(\''+lastLayer.id+'\')"><i class="fas fa-trash-alt"></i></div>';
         html += '</div>';
