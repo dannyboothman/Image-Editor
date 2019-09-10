@@ -541,8 +541,8 @@ window.dragMoveListener = dragMoveListener;
 
 Dropzone.autoDiscover = false;
 var myDropzone;
+var dropzoneAddElementImageAll;
 var dropzoneAddElementImage;
-var dropzoneAddElementImageName;
 
 myDropzone = new Dropzone("div#drop-target",{
     url: "#",
@@ -554,7 +554,8 @@ myDropzone = new Dropzone("div#drop-target",{
     accept: function (file, done) {
         myDropzone = this;
         dropzoneAddElementImage = file;
-        dropzoneAddElementImageName = file.name;
+        console.log(file);
+        dropzoneAddElementImageAll = file;
         var reader  = new FileReader();
         // it's onload event and you forgot (parameters)
         reader.onload = function(e)  {

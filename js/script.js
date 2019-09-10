@@ -130,8 +130,6 @@ function modalAddElementsChange(e, type){
             }
             break;
         case "image":
-            console.log("image");
-            console.log(dropzoneAddElementImage)
             if (dropzoneAddElementImage.length > 0){
                 finalButton.classList.remove("button_disabled");
             }
@@ -154,7 +152,7 @@ function modalAddElementFinal(){
         case "text":
             var elementValue = document.getElementById("modal_add_element_text").value.trim();
             var elementName = null;
-            var styles = {
+            styles = {
                 "color": "#000000",
                 "fontSize": 100,
                 "opacity": 100,
@@ -167,9 +165,13 @@ function modalAddElementFinal(){
             break;
         case "image":
             var elementValue = dropzoneAddElementImage;
-            var elementName = dropzoneAddElementImageName;
+            var elementName = dropzoneAddElementImageAll.name;
             elementName = elementName.replace(/.jpeg/gmi, "");
             elementName = elementName.replace(/.png/gmi, "");
+            styles = {
+                "width": dropzoneAddElementImageAll.width,
+                "height": dropzoneAddElementImageAll.height
+            }
             break;
     }
 
