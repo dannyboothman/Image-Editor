@@ -183,7 +183,19 @@
                     icon
                 </div>
                 <div class="favicon_creator_editor_section_colorStyle_item" data-type="image">
-                    image
+                    <div id="" class="input_container_lock">
+                        <div class="input_container">
+                            <label>Width</label>
+                            <input id="" type="number" value="0" onchange="" />
+                        </div>
+                        <div id="" class="input_container_lock_icon" data-lock="false" onclick="">
+                            <i class="fas fa-unlock"></i>
+                        </div>
+                        <div class="input_container">
+                            <label>Height</label>
+                            <input id="" type="number" value="0" onchange="" />
+                        </div>
+                    </div>
                 </div>
                 <div class="favicon_creator_editor_section_colorStyle_item" data-type="emoji">
                     emoji
@@ -259,12 +271,12 @@
                     </div>
                 </div>
                 <div class="canvas_section">
-                    <div id="favicon_creator_editor_canvas_size">
+                    <div id="favicon_creator_editor_canvas_size" class="input_container_lock">
                         <div class="input_container">
                             <label>Width</label>
                             <input id="favicon_creator_editor_canvas_size_width" type="number" value="600" onchange="canvasWidthChange();" />
                         </div>
-                        <div id="favicon_creator_edit_canvas_size_lock" data-lock="false" onclick="canvasWidthHeightLockChange();">
+                        <div id="favicon_creator_edit_canvas_size_lock" class="input_container_lock_icon" data-lock="false" onclick="widthHeightLockChange(this);">
                             <i class="fas fa-unlock"></i>
                         </div>
                         <div class="input_container">

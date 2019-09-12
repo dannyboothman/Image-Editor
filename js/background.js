@@ -484,16 +484,17 @@ function canvasHightChange(){
 
 }
 
-function canvasWidthHeightLockChange(){
+function widthHeightLockChange(el){
 
-    document.querySelector("#favicon_creator_edit_canvas_size_lock i").classList.toggle("fa-lock");
-    document.querySelector("#favicon_creator_edit_canvas_size_lock i").classList.toggle("fa-unlock");
+    var icon = el.querySelector("i");
+    icon.classList.toggle("fa-lock");
+    icon.classList.toggle("fa-unlock");
 
-    var lock = document.querySelector("#favicon_creator_edit_canvas_size_lock").getAttribute("data-lock");
+    var lock = el.getAttribute("data-lock");
     if (lock === "false"){
-        document.querySelector("#favicon_creator_edit_canvas_size_lock").setAttribute("data-lock", "true");
+        el.setAttribute("data-lock", "true");
     } else {
-        document.querySelector("#favicon_creator_edit_canvas_size_lock").setAttribute("data-lock", "false");
+        el.setAttribute("data-lock", "false");
     }
 
 }

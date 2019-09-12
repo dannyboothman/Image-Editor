@@ -117,32 +117,4 @@
 
 
 
-/* Canvas Width Height */
-#favicon_creator_editor_canvas_size{
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-items: flex-end;
-}
 
-#favicon_creator_editor_canvas_size .input_container{
-    width: 40%;
-}
-
-#favicon_creator_editor_canvas_size .input_container input{
-    width: 100%;
-}
-
-#favicon_creator_edit_canvas_size_lock{
-    width: 40px;
-    height: 40px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-#favicon_creator_edit_canvas_size_lock:hover{
-    background-color: #f5f5f7;
-}
