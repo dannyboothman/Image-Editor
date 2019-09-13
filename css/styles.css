@@ -585,6 +585,7 @@ main{
     width: 600px;
     height: 400px;
     position: relative;
+    display: block;
 }
 
 .fcv_item{
