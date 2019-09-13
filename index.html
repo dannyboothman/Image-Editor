@@ -186,14 +186,14 @@
                     <div id="" class="input_container_lock">
                         <div class="input_container">
                             <label>Width</label>
-                            <input id="" type="number" value="0" onchange="" />
+                            <input id="imageStyle_width" type="number" value="0" onchange="imageWidthChange();" />
                         </div>
-                        <div id="" class="input_container_lock_icon" data-lock="false" onclick="">
+                        <div id="imageStyle_width_height_lock" class="input_container_lock_icon" data-lock="false" onclick="widthHeightLockChange(this);">
                             <i class="fas fa-unlock"></i>
                         </div>
                         <div class="input_container">
                             <label>Height</label>
-                            <input id="" type="number" value="0" onchange="" />
+                            <input id="imageStyle_height" type="number" value="0" onchange="imageHeightChange();" />
                         </div>
                     </div>
                 </div>
@@ -457,6 +457,7 @@
 <script src="js/build.js"></script>
 <script src="js/background.js"></script>
 <script src="js/colorStyle.js"></script>
+<script src="js/imageStyle.js"></script>
 <script src="js/Sortable.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
 <script>

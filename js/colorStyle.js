@@ -26,6 +26,9 @@ function buildColorStyleNav(){
             case "text":
                 buildColorStyleSection(element)
                 break;
+            case "image":
+                buildImageSection(element);
+                break;
         }
 
     }

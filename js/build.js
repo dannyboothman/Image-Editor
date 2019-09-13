@@ -108,7 +108,7 @@ function buildImage(item){
     var zIndex = item.sequence + 1;
     var value = item.value;
 
-    var image = '<img src="' + value + '" />';
+    var image = '<img src="' + value + '" style="width: '+item.styles.width+'px; height: '+item.styles.height+'px;" />';
     var html = '<div class="fcv_item fcv_item_selected" data-id="' + id + '" style="z-index: ' + zIndex + '; ">' + image + '</div>';
 
     document.getElementById("favicon_creator_visual").innerHTML += html;
