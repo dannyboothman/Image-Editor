@@ -93,8 +93,9 @@ function buildText(item){
         decoration = "line-through";
     }
     var letterSpacing = item.styles.letterSpacing + "px";
+    var lineHeight = item.styles.lineHeight + "%";
 
-    var html = '<div class="fcv_item fcv_item_selected" data-id="' + id + '" style="z-index: ' + zIndex + '; color: ' + color + '; font-size: ' + fontSize + '; opacity: ' + opacity + ' font-weight: ' + bold + '; font-style: ' + italic + '; text-decoration: ' + decoration + '; letter-spacing: ' + letterSpacing + '">' + text + '</div>';
+    var html = '<div class="fcv_item fcv_item_selected" data-id="' + id + '" style="z-index: ' + zIndex + '; color: ' + color + '; font-size: ' + fontSize + '; opacity: ' + opacity + ' font-weight: ' + bold + '; font-style: ' + italic + '; text-decoration: ' + decoration + '; letter-spacing: ' + letterSpacing + '; line-height: ' + lineHeight + ';">' + text + '</div>';
 
     document.getElementById("favicon_creator_visual").innerHTML += html;
 

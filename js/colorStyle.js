@@ -65,6 +65,7 @@ function buildColorStyleSection(element){
     }
 
     document.querySelector("#colorStyle_text_letterSpacing_input").value = element.styles.letterSpacing;
+    document.querySelector("#colorStyle_text_lineHeight_input").value = element.styles.lineHeight;
 
 }
 
@@ -190,6 +191,21 @@ function colorStyleInputLetterSpacingChange(){
     element.styles.letterSpacing = letterSpacing;
     letterSpacing = letterSpacing + "px";
     document.querySelector(".fcv_item[data-id='"+element.id+"']").style.letterSpacing = letterSpacing;
+}
+
+function colorStyleInputLineHeightChange(){
+    console.log(colorStyleElement);
+
+    var element = layers.filter(function(layer) {
+        return layer.id === colorStyleElement;
+    });
+
+    element = element[0];
+
+    var lineHeight = document.querySelector("#colorStyle_text_lineHeight_input").value;
+    element.styles.lineHeight = lineHeight;
+    lineHeight = lineHeight + "%";
+    document.querySelector(".fcv_item[data-id='"+element.id+"']").style.lineHeight = lineHeight;
 }
 
 function colorStyleInputBold(){
