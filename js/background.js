@@ -335,10 +335,24 @@ function zoomCanvas(which){
     }
 
     document.getElementById("favicon_creator_visual_inner_container").style.zoom = newZoom;
+
+    checkResetZoom();
 }
 
 function zoomCanvasReset(){
     document.getElementById("favicon_creator_visual_inner_container").style.zoom = 1;
+    checkResetZoom();
+}
+
+function checkResetZoom(){
+
+    var zoom = document.getElementById("favicon_creator_visual_inner_container").style.zoom;
+    if (zoom > 1 || zoom < 1){
+        document.getElementById("favicon_creator_menu_item_dropdown_item_resetZoom").classList.remove("favicon_creator_menu_item_dropdown_item_disabled");
+    } else {
+        document.getElementById("favicon_creator_menu_item_dropdown_item_resetZoom").classList.add("favicon_creator_menu_item_dropdown_item_disabled");
+    }
+
 }
 
 function fitToArea(){
@@ -373,6 +387,7 @@ function fitToArea(){
 
     document.getElementById("favicon_creator_visual_inner_container").style.zoom = newZoom;
 
+    checkResetZoom();
 }
 
 function addGuide(which){
