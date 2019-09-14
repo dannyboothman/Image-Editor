@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Editor</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="css/background.css" />
+    <link rel="stylesheet" type="text/css" href="css/colorStyle.css" />
+    <link rel="stylesheet" type="text/css" href="css/colorPicker.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/dropzone.css" />
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700&display=swap" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/a7a177d079.js"></script>
+    <script src="js/dropzone.js"></script>
+</head>
+<body>
+
+<main>
+    <div id="favicon_creator_menu">
+        <div class="favicon_creator_menu_item">
+            <div class="favicon_creator_menu_item_top">File</div>
+            <div class="favicon_creator_menu_item_dropdown">
+                <div class="favicon_creator_menu_item_dropdown_item" onclick="fileNew();">New</div>
+                <div class="favicon_creator_menu_item_dropdown_item" onclick="fileOpen();">Open</div>
+                <div class="favicon_creator_menu_item_dropdown_item">Import</div>
+                <div class="favicon_creator_menu_item_dropdown_item" onclick="fileSaveOpen(false)">Save</div>
+                <div class="favicon_creator_menu_item_dropdown_item" onclick="save();">Save New</div>
+            </div>
+        </div>
+        <div class="favicon_creator_menu_item">
+            <div class="favicon_creator_menu_item_top">Edit</div>
+            <div class="favicon_creator_menu_item_dropdown">
+                    <div class="favicon_creator_menu_item_dropdown_item">Undo</div>
+                    <div class="favicon_creator_menu_item_dropdown_item">Redo</div>
+                    <div class="favicon_creator_menu_item_dropdown_item"></div>
+                </div>
+        </div>
+        <div class="favicon_creator_menu_item">
+            <div class="favicon_creator_menu_item_top">View</div>
+            <div class="favicon_creator_menu_item_dropdown" style="min-width: 150px;">
+                <div class="favicon_creator_menu_item_dropdown_item" data-hasMenu="true">Zoom<i class="fas fa-caret-right"></i>
+                    <div class="favicon_creator_menu_item_dropdown_add1">
+                        <div class="favicon_creator_menu_item_dropdown_item" onclick="zoomCanvas(1);">Zoom In</div>
+                        <div class="favicon_creator_menu_item_dropdown_item" onclick="zoomCanvas(0);">Zoom Out</div>
+                        <div class="favicon_creator_menu_item_dropdown_item" onclick="zoomCanvasReset();">Reset Zoom</div>
+                        <div class="favicon_creator_menu_item_dropdown_item" onclick="fitToArea();">Fit To Area</div>
+                    </div>
+                </div>
+                <div class="favicon_creator_menu_item_dropdown_item" data-hasMenu="true">Guides<i class="fas fa-caret-right"></i>
+                    <div class="favicon_creator_menu_item_dropdown_add1">
+                        <div class="favicon_creator_menu_item_dropdown_item" onclick="addGuide(0);">Add Horizontal Guide</div>
+                        <div class="favicon_creator_menu_item_dropdown_item" onclick="addGuide(1);">Add Vertical Guide</div>
+                        <div id="favicon_creator_menu_item_dropdown_item_hideGuides" class="favicon_creator_menu_item_dropdown_item favicon_creator_menu_item_dropdown_item_disabled" onclick="hideGuides(this)">Hide Guides</div>
+                        <div id="favicon_creator_menu_item_dropdown_item_clearGuides" class="favicon_creator_menu_item_dropdown_item favicon_creator_menu_item_dropdown_item_disabled" onclick="clearGuides();">Clear Guides</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="favicon_creator_menu_zoom">
+            <div class="favicon_creator_menu_zoom_item" onclick="zoomCanvas(0);"><i class="fas fa-search-minus"></i></div>
+            <div class="favicon_creator_menu_zoom_item" onclick="zoomCanvas(1);"><i class="fas fa-search-plus"></i></div>
+        </div>
+    </div>
+    <div id="favicon_creator">
+
+        <div id="favicon_creator_nav_container">
+            <nav id="favicon_creator_nav">
+                <a class="favicon_creator_nav_item" onclick="editorNav('Elements');" data-editorNav="Elements">
+                    <i class="fas fa-images"></i>
+                    <span>Elements</span>
+                </a>
+                <a class="favicon_creator_nav_item" onclick="editorNav('Edit');" data-editorNav="Edit">
+                    <i class="fas fa-tint"></i>
+                    <span>Edit<br />Elements</span>
+                </a>
+                <a class="favicon_creator_nav_item" onclick="editorNav('Canvas');" data-editorNav="Canvas">
+                    <i class="fas fa-border-style"></i>
+                    <span aria-label="Background">Canvas</span>
+                </a>
+                <a class="favicon_creator_nav_item" onclick="editorNav('Download');" data-editorNav="Download">
+                    <i class="fas fa-download"></i>
+                    <span aria-label="Download">Down<br />load</span>
+                </a>
+                <a class="favicon_creator_nav_item" onclick="editorNav('Warnings');" data-editorNav="Warnings">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span aria-label="Download">Warnings</span>
+                </a>
+            </nav>
+        </div>
+
+        <div id="favicon_creator_editor_container">
+            <div id="favicon_creator_editor_header">
+                <div id="favicon_creator_editor_header_back" onclick="editorBack();"><i class="fas fa-arrow-left"></i></div>
+                <div id="favicon_creator_editor_header_title">Editor</div>
+            </div>
+
+            <div class="favicon_creator_editor_section" data-editorSection="Elements">
+                
+                <div id="favicon_creator_editor_add_element" onclick="openModal('add-elements')">Add Element</div>
+
+                <div id="favicon_creator_elements">
+                    <div id="favicon_creator_elements_inner"></div>
+                </div>
+
+            </div>
+
+            <div class="favicon_creator_editor_section" data-editorSection="Edit">
+                <div class="favicon_creator_editor_section_colorStyle_item" data-type="text">
+                    <div class="colorStyle_text_section">
+                        <div class="input_container">
+                            <label for="colorStyle_text_input">Text</label>
+                            <input type="text" id="colorStyle_text_input" onchange="colorStyleInputChange()" onkeydown="colorStyleInputChange();" onkeyup="colorStyleInputChange();" />
+                        </div>
+                    </div>
+                    <div class="colorStyle_text_section">
+                        <div id="colorStyle_text_color_input_label">Color</div>
+                        <div id="colorStyle_text_color_input_container">
+                            <div id="colorStyle_text_color_input"></div>
+                        </div>
+                    </div>
+                    <div class="colorStyle_text_section">
+                        <div class="input_container margint10">
+                            <label for="colorStyle_text_size_input">Font Size</label>
+                            <input type="number" id="colorStyle_text_size_input" min="1" step="1" value="100" onchange="colorStyleInputFontSizeChange()" onkeydown="colorStyleInputFontSizeChange();" onkeyup="colorStyleInputFontSizeChange();" />
+                        </div>
+                    </div>
+                    <div class="colorStyle_text_section">
+                        <div class="input_container margint10">
+                            <label for="colorStyle_text_opacity_input">Opacity</label>
+                            <input type="range" id="colorStyle_text_opacity_input" min="0" max="100" step="1" value="100" onchange="colorStyleInputOpacityChange()" />
+                        </div>
+                    </div>
+                    <div class="colorStyle_text_section">
+                        <div class="input_container margint10">
+                            <label for="colorStyle_text_letterSpacing_input">Letter Spacing</label>
+                            <input type="range" id="colorStyle_text_letterSpacing_input" min="-20" max="100" step="1" value="0" onchange="colorStyleInputLetterSpacingChange()" />
+                        </div>
+                    </div>
+                    <div class="colorStyle_text_section">
+                        <div id="colorStyle_text_styles_label">Styles</div>
+                        <div class="colorStyle_text_styles_container">
+                            <div id="colorStyle_text_styles_item_bold" class="colorStyle_text_styles_item" onclick="colorStyleInputBold();"><i class="fas fa-bold"></i></div>
+                            <div id="colorStyle_text_styles_item_italic" class="colorStyle_text_styles_item" onclick="colorStyleInputItalic();"><i class="fas fa-italic"></i></div>
+                            <div id="colorStyle_text_styles_item_underline" class="colorStyle_text_styles_item" onclick="colorStyleInputUnderline();"><i class="fas fa-underline"></i></div>
+                            <div id="colorStyle_text_styles_item_linethrough" class="colorStyle_text_styles_item" onclick="colorStyleInputLinethrough();"><i class="fas fa-strikethrough"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="favicon_creator_editor_section_colorStyle_item" data-type="icon">
+                    icon
+                </div>
+                <div class="favicon_creator_editor_section_colorStyle_item" data-type="image">
+                    <div id="" class="input_container_lock">
+                        <div class="input_container">
+                            <label>Width</label>
+                            <input id="imageStyle_width" type="number" value="0" onchange="imageWidthChange();" />
+                        </div>
+                        <div id="imageStyle_width_height_lock" class="input_container_lock_icon" data-lock="false" onclick="widthHeightLockChange(this);">
+                            <i class="fas fa-unlock"></i>
+                        </div>
+                        <div class="input_container">
+                            <label>Height</label>
+                            <input id="imageStyle_height" type="number" value="0" onchange="imageHeightChange();" />
+                        </div>
+                    </div>
+                </div>
+                <div class="favicon_creator_editor_section_colorStyle_item" data-type="emoji">
+                    emoji
+                </div>
+                <div class="favicon_creator_editor_section_colorStyle_item" data-type="shape">
+                    shape
+                </div>
+            </div>
+
+            <div class="favicon_creator_editor_section" data-editorSection="Canvas">
+                <div class="canvas_section">
+                    <p><strong>Fill Type</strong></p>
+                    <div id="favicon_creator_editor_canvas_fill_type">
+                        <div class="favicon_creator_editor_canvas_fill_type_item" onclick="changeBackgroundFillType(this);" data-type="none" title="None">
+                            <div class="favicon_creator_editor_canvas_fill_type_item_inner"><i class="fas fa-times"></i></div>
+                        </div>
+                        <div class="favicon_creator_editor_canvas_fill_type_item favicon_creator_editor_canvas_fill_type_item_selected" onclick="changeBackgroundFillType(this);" data-type="color" title="Color">
+                            <div class="favicon_creator_editor_canvas_fill_type_item_inner">
+                                <div class="canvas-background-color-picker"></div>
+                            </div>
+                        </div>
+                        <div class="favicon_creator_editor_canvas_fill_type_item" onclick="changeBackgroundFillType(this);" data-type="gradient" title="Gradient">
+                            <div class="favicon_creator_editor_canvas_fill_type_item_inner"></div>
+                        </div>
+                        <div class="favicon_creator_editor_canvas_fill_type_item" onclick="changeBackgroundFillType(this);" data-type="pattern" title="Pattern">
+                            <div class="favicon_creator_editor_canvas_fill_type_item_inner">
+                                <i class="fas fa-asterisk"></i>
+                                <i class="fas fa-asterisk"></i>
+                                <i class="fas fa-asterisk"></i>
+                                <i class="fas fa-asterisk"></i>
+                                <i class="fas fa-asterisk"></i>
+                            </div>
+                        </div>
+                        <div class="favicon_creator_editor_canvas_fill_type_item" onclick="changeBackgroundFillType(this);" data-type="image" title="image">
+                            <div class="favicon_creator_editor_canvas_fill_type_item_inner">
+                                <i class="fas fa-image"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="favicon_creator_editor_canvas_fill_type_container">
+                        <div class="favicon_creator_canvas_fill_type_container_item" data-type="none"></div>
+                        <div class="favicon_creator_canvas_fill_type_container_item favicon_creator_canvas_fill_type_container_item_selected" data-type="color">
+                            <div class="canvas-background-color-picker"></div>
+                        </div>
+                        <div class="favicon_creator_canvas_fill_type_container_item" data-type="gradient">
+                            <div id="favicon_creator_canvas_fill_type_gradient_example"></div>
+                            <div id="favicon_creator_cavas_fill_type_gradient_color_container">
+                                <div class="favicon_creator_cavas_fill_type_gradient_color_item">
+                                    <div id="favicon_creator_cavas_fill_type_gradient_color1"></div>
+                                </div>
+                                <div class="favicon_creator_cavas_fill_type_gradient_color_item">
+                                    <div id="favicon_creator_cavas_fill_type_gradient_color2"></div>
+                                </div>
+                            </div>
+                            <div class="input_container margint10">
+                                <label for="favicon_creator_canvas_fill_type_gradient_type">Style</label>
+                                <select id="favicon_creator_canvas_fill_type_gradient_type" onchange="changeBackgroundGradientStyle()">
+                                    <option value="linear">Linear</option>
+                                    <option value="radial">Radial</option>
+                                </select>
+                            </div>
+                            <div id="favicon_creator_canvas_fill_type_gradient_angle_container" class="input_container margint10">
+                                <label for="favicon_creator_canvas_fill_type_gradient_angle">Angle</label>
+                                <input type="range" id="favicon_creator_canvas_fill_type_gradient_angle" min="0" max="180" step="1" value="90" onchange="changeBackgroundGradientAngle()" />
+                            </div>
+                        </div>
+                        <div class="favicon_creator_canvas_fill_type_container_item" data-type="pattern">
+                            Pattern
+                        </div>
+                        <div class="favicon_creator_canvas_fill_type_container_item" data-type="image">
+                            Image
+                        </div>
+                    </div>
+                </div>
+                <div class="canvas_section">
+                    <div id="favicon_creator_editor_canvas_size" class="input_container_lock">
+                        <div class="input_container">
+                            <label>Width</label>
+                            <input id="favicon_creator_editor_canvas_size_width" type="number" value="600" onchange="canvasWidthChange();" />
+                        </div>
+                        <div id="favicon_creator_edit_canvas_size_lock" class="input_container_lock_icon" data-lock="false" onclick="widthHeightLockChange(this);">
+                            <i class="fas fa-unlock"></i>
+                        </div>
+                        <div class="input_container">
+                            <label>Height</label>
+                            <input id="favicon_creator_editor_canvas_size_height" type="number" value="400" onchange="canvasHightChange();" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="favicon_creator_editor_section" data-editorSection="Download">
+                download
+            </div>
+
+            <div class="favicon_creator_editor_section" data-editorSection="Warnings">
+                warnings
+            </div>
+
+        </div>
+
+        <div id="favicon_creator_visual_outer_container">
+            <div id="favicon_creator_visual_inner_container">
+                <div id="favicon_creator_visual" style="background-color: #FFFFFF;"></div>
+            </div>
+        </div>
+
+</main>
+
+<div id="modal_overlay" onclick="closeModalOverlay();"></div>
+
+<div class="modal" data-modal="add-elements">
+    <div class="modal_close" onclick="closeModal('add-elements')"><i class="fas fa-times"></i></div>
+    <div class="modal_header">
+        <div class="modal_header_title">Add Element</div>
+    </div>
+    <div class="modal_body">
+        <div class="align_center marginb20">What element would you like to add?</div>
+        <div id="modal_add_element_buttons">
+            <div class="modal_add_element_button" data-modalAddElementButton="text" onclick="modalAddElementButton(this, 'text'); modalAddElementsChange('text');">
+                <i class="fas fa-keyboard"></i>
+                <strong>Text</strong>
+            </div>
+            <div class="modal_add_element_button" data-modalAddElementButton="icon" onclick="modalAddElementButton(this, 'icon'); modalAddElementsChange('icon');">
+                <i class="fab fa-font-awesome-flag"></i>
+                <strong>Icon</strong>
+            </div>
+            <div class="modal_add_element_button" data-modalAddElementButton="image" onclick="modalAddElementButton(this, 'image'); modalAddElementsChange('image');">
+                <i class="fas fa-image"></i>
+                <strong>Image</strong>
+            </div>
+            <div class="modal_add_element_button" data-modalAddElementButton="emoji" onclick="modalAddElementButton(this, 'emoji'); modalAddElementsChange('emoji');">
+                <i class="fas fa-smile-beam"></i>
+                <strong>Emoji</strong>
+            </div>
+            <div class="modal_add_element_button" data-modalAddElementButton="shape" onclick="modalAddElementButton(this, 'shape'); modalAddElementsChange('shape');">
+                <i class="fas fa-shapes"></i>
+                <strong>Shape</strong>
+            </div>
+        </div>
+        <div class="modal_add_element_container align_center" data-modalAddElement="text">
+            <div class="input_container">
+                <label for="modal_add_element_text">Enter Text</label>
+                <input type="text" id="modal_add_element_text" onchange="modalAddElementsChange(event, 'text')" onkeydown="modalAddElementsChange(event, 'text');" onkeyup="modalAddElementsChange(event, 'text');" />
+            </div>
+        </div>
+        <div class="modal_add_element_container" data-modalAddElement="icon">
+            Icon
+        </div>
+        <div class="modal_add_element_container" data-modalAddElement="image">
+            <div class="dropzone" id="drop-target"></div>
+        </div>
+        <div class="modal_add_element_container" data-modalAddElement="emoji">
+            Emoji
+        </div>
+        <div class="modal_add_element_container" data-modalAddElement="shape">
+            Shape
+        </div>
+    </div>
+    <div class="modal_footer">
+        <div class="modal_footer_button button" onclick="closeModal('add-elements')">Close</div>
+        <div id="modal_add_element_final_button" class="modal_footer_button button button_primary button_disabled" onclick="modalAddElementFinal();">Add</div>
+    </div>
+</div>
+
+<div class="modal" data-modal="delete-element">
+    <div class="modal_close" onclick="closeModal('delete-element')"><i class="fas fa-times"></i></div>
+    <div class="modal_header">
+        <div class="modal_header_title">Delete Element</div>
+    </div>
+    <div class="modal_body">
+        Are you sure you want to delete this element?
+    </div>
+    <div class="modal_footer">
+        <div class="modal_footer_button button" onclick="closeModal('delete-element')">Cancel</div>
+        <div class="modal_footer_button button button_red" onclick="deleteElementItemFinal();">Delete</div>
+    </div>
+</div>
+
+<div class="modal" data-modal="file-new-save">
+    <div class="modal_close" onclick="closeModal('file-new-save');"><i class="fas fa-times"></i></div>
+    <div class="modal_header">
+        <div class="modal_header_title">Save First?</div>
+    </div>
+    <div class="modal_body">
+        Would you like to save your current work before starting a new file?
+    </div>
+    <div class="modal_footer">
+        <div class="modal_footer_button button" onclick="closeModal('file-new-save');">Cancel</div>
+        <div class="modal_footer_button button" onclick="fileNewFinal();">No, Start New File</div>
+        <div class="modal_footer_button button button_primary" onclick="closeModal('file-new-save'); fileSaveOpen(true);">Yes, Save First</div>
+    </div>
+</div>
+
+<div class="modal" data-modal="file-save">
+    <div class="modal_close" onclick="saveThenNew = false; closeModal('file-save');"><i class="fas fa-times"></i></div>
+    <div class="modal_header">
+        <div class="modal_header_title">Save</div>
+    </div>
+    <div class="modal_body">
+        <div class="input_container">
+            <label for="file_save_input">File Name</label>
+            <input type="text" id="file_save_input" onchange="fileSaveInput(event)" onkeyup="fileSaveInput(event);" />
+            <div class="input_helper_text">
+                Files are saved locally using cookies.<br />
+                You will only be able to access your saved files via this device and browser.
+            </div>
+        </div>
+    </div>
+    <div class="modal_body" id="file_save_overwrite_container">
+        <strong>Overwrite Existing File</strong>
+        <div class="input_helper_text">Select an existing file below and click save if you want to overwrite an existing save file.</div>
+        <div id="file_save_overwrite_list"></div>
+    </div>
+    <div class="modal_footer">
+        <div class="modal_footer_button button" onclick="saveThenNew = false; closeModal('file-save');">Cancel</div>
+        <div id="modal_file_save_final_button" class="modal_footer_button button button_primary button_disabled" onclick="fileSave();">Save</div>
+    </div>
+</div>
+
+<div class="modal" data-modal="file-open">
+    <div class="modal_close" onclick="closeModal('file-open');"><i class="fas fa-times"></i></div>
+    <div class="modal_header">
+        <div class="modal_header_title">Open</div>
+    </div>
+    <div class="modal_body">
+        <div id="modal_file_open_zero">
+            <p>Zerp</p>
+        </div>
+        <div id="modal_file_open_list">
+            <p>More</p>
+        </div>
+    </div>
+    <div class="modal_footer">
+        <div class="modal_footer_button button" onclick="closeModal('file-open');">Cancel</div>
+        <div id="modal_file_open_final_button" class="modal_footer_button button button_primary button_disabled">Open</div>
+    </div>
+</div>
+
+
+<div class="context_menu" data-contextMenu="element-item">
+    <div class="context_menu_item" onclick="contextCopyElementItem()">Copy</div>
+    <div class="context_menu_item" onclick="contextEditElementItem()">Edit</div>
+    <div id="context_menu_item_arrange" class="context_menu_item context_menu_item_disabled" data-hasDropdown="true">Arrange<i class="fas fa-caret-right context_menu_item_right_icon"></i>
+        <div class="context_menu_item_dropdown">
+            <div id="context_menu_item_arrange1" class="context_menu_item context_menu_item_disabled" onclick="contextBringToFront();">Bring to Front</div>
+            <div id="context_menu_item_arrange2" class="context_menu_item context_menu_item_disabled" onclick="contextBringForward();">Bring Foward</div>
+            <div id="context_menu_item_arrange3" class="context_menu_item context_menu_item_disabled" onclick="contextSendBackward();">Send Backward</div>
+            <div id="context_menu_item_arrange4" class="context_menu_item context_menu_item_disabled" onclick="contextSendToBack();">Send to Back</div>
+        </div>
+    </div>
+    <div class="context_menu_item" onclick="contextDeleteElementItem();">Delete</div>
+</div>
+
+<script src="js/colorPicker.min.js"></script>
+<script src="js/script.js"></script>
+<script src="js/mainMenu.js"></script>
+<script src="js/build.js"></script>
+<script src="js/background.js"></script>
+<script src="js/colorStyle.js"></script>
+<script src="js/imageStyle.js"></script>
+<script src="js/Sortable.js"></script>
+<script src="js/html2canvas.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+<script>
+var layerContainer = document.getElementById('favicon_creator_elements_inner');
+
+new Sortable(layerContainer, {
+    handle: '.favicon_creator_elements_item_move',
+    animation: 150,
+    filter: ".favicon_creator_elements_item_move_disabled",
+    onEnd: function(ev){
+        sortLayerSequence();
+        selectElementItem(ev.item.dataset["id"]);
+    }
+});
+
+// target elements with the "draggable" class
+interact('.fcv_item.fcv_item_selected').draggable({
+    // enable inertial throwing
+    inertia: true,
+    // keep the element within the area of it's parent
+    modifiers: [
+      interact.modifiers.restrictRect({
+        endOnly: true
+      })
+    ],
+    // enable autoScroll
+    autoScroll: true,
+    // call this function on every dragmove event
+    onmove: dragMoveListener,
+    // call this function on every dragend event
+    onend: function (event) {
+      
+    }
+});
+
+interact('.guide.guide_vertical').draggable({
+    // enable inertial throwing
+    lockAxis: 'x',
+    // keep the element within the area of it's parent
+    modifiers: [
+    interact.modifiers.restrictRect({
+        restriction: 'parent'
+      })
+    ],
+    // enable autoScroll
+    autoScroll: true,
+    // call this function on every dragmove event
+    onmove: dragMoveListener,
+    // call this function on every dragend event
+    onend: function (event) {
+      
+    }
+
+});
+
+interact('.guide.guide_horizontal').draggable({
+    // enable inertial throwing
+    lockAxis: 'y',
+    // keep the element within the area of it's parent
+    modifiers: [
+    interact.modifiers.restrictRect({
+        restriction: 'parent'
+      })
+    ],
+    // enable autoScroll
+    autoScroll: true,
+    // call this function on every dragmove event
+    onmove: dragMoveListener,
+    // call this function on every dragend event
+    onend: function (event) {
+      
+    }
+
+});
+
+function dragMoveListener (event) {
+  var target = event.target
+  // keep the dragged position in the data-x/data-y attributes
+  var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
+  var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
+
+  // translate the element
+  target.style.webkitTransform =
+    target.style.transform =
+      'translate(' + x + 'px, ' + y + 'px)'
+
+  // update the posiion attributes
+  target.setAttribute('data-x', x)
+  target.setAttribute('data-y', y)
+}
+
+// this is used later in the resizing and gesture demos
+window.dragMoveListener = dragMoveListener;
+
+Dropzone.autoDiscover = false;
+var myDropzone;
+var dropzoneAddElementImageAll;
+var dropzoneAddElementImage;
+
+myDropzone = new Dropzone("div#drop-target",{
+    url: "#",
+    maxFilesize: 5,
+    autoProcessQueue: true,
+    maxFiles: 1,
+    acceptedFiles: "image/jpeg,image/png",
+    method: "put",
+    accept: function (file, done) {
+        myDropzone = this;
+        dropzoneAddElementImage = file;
+        console.log(file);
+        dropzoneAddElementImageAll = file;
+        var reader  = new FileReader();
+        // it's onload event and you forgot (parameters)
+        reader.onload = function(e)  {
+            // the result image data
+            dropzoneAddElementImage = e.target.result;
+            document.querySelector(".dropzone").classList.add("dropzone_accepted_ready");
+            modalAddElementsChange(null, "image");
+        }
+        // you have to declare the file loading
+        reader.readAsDataURL(file);
+    }
+});
+
+</script>
+</body>
+</html>
