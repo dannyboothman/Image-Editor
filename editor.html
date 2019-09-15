@@ -25,7 +25,7 @@
                 <div class="favicon_creator_menu_item_dropdown_item" onclick="fileOpen();">Open</div>
                 <div class="favicon_creator_menu_item_dropdown_item">Import</div>
                 <div class="favicon_creator_menu_item_dropdown_item" onclick="fileSaveOpen(false)">Save</div>
-                <div class="favicon_creator_menu_item_dropdown_item" onclick="save();">Save New</div>
+                <div class="favicon_creator_menu_item_dropdown_item" onclick="openSaveModal();">Save New</div>
             </div>
         </div>
         <div class="favicon_creator_menu_item">
@@ -287,47 +287,49 @@
     <div class="modal_header">
         <div class="modal_header_title">Add Element</div>
     </div>
-    <div class="modal_body">
-        <div class="align_center marginb20">What element would you like to add?</div>
-        <div id="modal_add_element_buttons">
-            <div class="modal_add_element_button" data-modalAddElementButton="text" onclick="modalAddElementButton(this, 'text'); modalAddElementsChange('text');">
-                <i class="fas fa-keyboard"></i>
-                <strong>Text</strong>
+    <div class="modal_body_outer_container">
+        <div class="modal_body">
+            <div class="align_center marginb20">What element would you like to add?</div>
+            <div id="modal_add_element_buttons">
+                <div class="modal_add_element_button" data-modalAddElementButton="text" onclick="modalAddElementButton(this, 'text'); modalAddElementsChange('text');">
+                    <i class="fas fa-keyboard"></i>
+                    <strong>Text</strong>
+                </div>
+                <div class="modal_add_element_button" data-modalAddElementButton="icon" onclick="modalAddElementButton(this, 'icon'); modalAddElementsChange('icon');">
+                    <i class="fab fa-font-awesome-flag"></i>
+                    <strong>Icon</strong>
+                </div>
+                <div class="modal_add_element_button" data-modalAddElementButton="image" onclick="modalAddElementButton(this, 'image'); modalAddElementsChange('image');">
+                    <i class="fas fa-image"></i>
+                    <strong>Image</strong>
+                </div>
+                <div class="modal_add_element_button" data-modalAddElementButton="emoji" onclick="modalAddElementButton(this, 'emoji'); modalAddElementsChange('emoji');">
+                    <i class="fas fa-smile-beam"></i>
+                    <strong>Emoji</strong>
+                </div>
+                <div class="modal_add_element_button" data-modalAddElementButton="shape" onclick="modalAddElementButton(this, 'shape'); modalAddElementsChange('shape');">
+                    <i class="fas fa-shapes"></i>
+                    <strong>Shape</strong>
+                </div>
             </div>
-            <div class="modal_add_element_button" data-modalAddElementButton="icon" onclick="modalAddElementButton(this, 'icon'); modalAddElementsChange('icon');">
-                <i class="fab fa-font-awesome-flag"></i>
-                <strong>Icon</strong>
+            <div class="modal_add_element_container align_center" data-modalAddElement="text">
+                <div class="input_container">
+                    <label for="modal_add_element_text">Enter Text</label>
+                    <input type="text" id="modal_add_element_text" onchange="modalAddElementsChange(event, 'text')" onkeydown="modalAddElementsChange(event, 'text');" onkeyup="modalAddElementsChange(event, 'text');" />
+                </div>
             </div>
-            <div class="modal_add_element_button" data-modalAddElementButton="image" onclick="modalAddElementButton(this, 'image'); modalAddElementsChange('image');">
-                <i class="fas fa-image"></i>
-                <strong>Image</strong>
+            <div class="modal_add_element_container" data-modalAddElement="icon">
+                Icon
             </div>
-            <div class="modal_add_element_button" data-modalAddElementButton="emoji" onclick="modalAddElementButton(this, 'emoji'); modalAddElementsChange('emoji');">
-                <i class="fas fa-smile-beam"></i>
-                <strong>Emoji</strong>
+            <div class="modal_add_element_container" data-modalAddElement="image">
+                <div class="dropzone" id="drop-target"></div>
             </div>
-            <div class="modal_add_element_button" data-modalAddElementButton="shape" onclick="modalAddElementButton(this, 'shape'); modalAddElementsChange('shape');">
-                <i class="fas fa-shapes"></i>
-                <strong>Shape</strong>
+            <div class="modal_add_element_container" data-modalAddElement="emoji">
+                Emoji
             </div>
-        </div>
-        <div class="modal_add_element_container align_center" data-modalAddElement="text">
-            <div class="input_container">
-                <label for="modal_add_element_text">Enter Text</label>
-                <input type="text" id="modal_add_element_text" onchange="modalAddElementsChange(event, 'text')" onkeydown="modalAddElementsChange(event, 'text');" onkeyup="modalAddElementsChange(event, 'text');" />
+            <div class="modal_add_element_container" data-modalAddElement="shape">
+                Shape
             </div>
-        </div>
-        <div class="modal_add_element_container" data-modalAddElement="icon">
-            Icon
-        </div>
-        <div class="modal_add_element_container" data-modalAddElement="image">
-            <div class="dropzone" id="drop-target"></div>
-        </div>
-        <div class="modal_add_element_container" data-modalAddElement="emoji">
-            Emoji
-        </div>
-        <div class="modal_add_element_container" data-modalAddElement="shape">
-            Shape
         </div>
     </div>
     <div class="modal_footer">
@@ -341,8 +343,10 @@
     <div class="modal_header">
         <div class="modal_header_title">Delete Element</div>
     </div>
-    <div class="modal_body">
-        Are you sure you want to delete this element?
+    <div class="modal_body_outer_container">
+        <div class="modal_body">
+            Are you sure you want to delete this element?
+        </div>
     </div>
     <div class="modal_footer">
         <div class="modal_footer_button button" onclick="closeModal('delete-element')">Cancel</div>
@@ -355,8 +359,10 @@
     <div class="modal_header">
         <div class="modal_header_title">Save First?</div>
     </div>
-    <div class="modal_body">
-        Would you like to save your current work before starting a new file?
+    <div class="modal_body_outer_container">
+        <div class="modal_body">
+            Would you like to save your current work before starting a new file?
+        </div>
     </div>
     <div class="modal_footer">
         <div class="modal_footer_button button" onclick="closeModal('file-new-save');">Cancel</div>
@@ -370,20 +376,22 @@
     <div class="modal_header">
         <div class="modal_header_title">Save</div>
     </div>
-    <div class="modal_body">
-        <div class="input_container">
-            <label for="file_save_input">File Name</label>
-            <input type="text" id="file_save_input" onchange="fileSaveInput(event)" onkeyup="fileSaveInput(event);" />
-            <div class="input_helper_text">
-                Files are saved locally using cookies.<br />
-                You will only be able to access your saved files via this device and browser.
+    <div class="modal_body_outer_container">
+        <div class="modal_body">
+            <div class="input_container">
+                <label for="file_save_input">File Name</label>
+                <input type="text" id="file_save_input" onchange="fileSaveInput(event)" onkeyup="fileSaveInput(event);" />
+                <div class="input_helper_text">
+                    Files are saved locally using cookies.<br />
+                    You will only be able to access your saved files via this device and browser.
+                </div>
             </div>
         </div>
-    </div>
-    <div class="modal_body" id="file_save_overwrite_container">
-        <strong>Overwrite Existing File</strong>
-        <div class="input_helper_text">Select an existing file below and click save if you want to overwrite an existing save file.</div>
-        <div id="file_save_overwrite_list"></div>
+        <div class="modal_body" id="file_save_overwrite_container">
+            <strong>Overwrite Existing File</strong>
+            <div class="input_helper_text">Select an existing file below and click save if you want to overwrite an existing save file.</div>
+            <div id="file_save_overwrite_list"></div>
+        </div>
     </div>
     <div class="modal_footer">
         <div class="modal_footer_button button" onclick="saveThenNew = false; closeModal('file-save');">Cancel</div>
@@ -396,12 +404,14 @@
     <div class="modal_header">
         <div class="modal_header_title">Open</div>
     </div>
-    <div class="modal_body">
-        <div id="modal_file_open_zero">
-            <p>Zerp</p>
-        </div>
-        <div id="modal_file_open_list">
-            <p>More</p>
+    <div class="modal_body_outer_container">
+        <div class="modal_body">
+            <div id="modal_file_open_zero">
+                <p>Zerp</p>
+            </div>
+            <div id="modal_file_open_list">
+                <p>More</p>
+            </div>
         </div>
     </div>
     <div class="modal_footer">
@@ -409,6 +419,37 @@
         <div id="modal_file_open_final_button" class="modal_footer_button button button_primary button_disabled">Open</div>
     </div>
 </div>
+
+
+<div id="main_save_modal" class="modal" data-modal="file-main-save">
+    <div class="modal_close" onclick="closeModal('file-main-save');"><i class="fas fa-times"></i></div>
+    <div class="modal_header">
+        <div class="modal_header_title">Save</div>
+    </div>
+    <div class="modal_body_outer_container">
+        <div class="modal_body">
+            <div id="main_save_modal_loading" class="loader">
+                <div class="lds-ripple"><div></div><div></div></div>
+                <span>Loading</span>
+            </div>
+            <div id="main_save_modal_loaded">
+                <div class="width_2_container">
+                    <div class="width_2">
+                        <div id="main_save_modal_example"></div>
+                    </div>
+                    <div class="width_2">
+                        sd
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal_footer">
+        <div class="modal_footer_button button" onclick="closeModal('file-main-save');">Close</div>
+        <div class="modal_footer_button button button_primary button_disabled">Save</div>
+    </div>
+</div>
+
 
 
 <div class="context_menu" data-contextMenu="element-item">
@@ -434,6 +475,7 @@
 <script src="js/imageStyle.js"></script>
 <script src="js/Sortable.js"></script>
 <script src="js/html2canvas.js"></script>
+<script src="js/save.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
 <script>
 var layerContainer = document.getElementById('favicon_creator_elements_inner');

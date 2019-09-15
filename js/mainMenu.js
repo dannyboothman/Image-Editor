@@ -156,14 +156,3 @@ function fileSave(){
     }
 }
 
-
-
-function save(){
-    console.log("saveee")
-    document.querySelector("html, body").scrollTop = 0;
-    setTimeout(function(){
-        html2canvas(document.querySelector("#favicon_creator_visual")).then(canvas => {
-            document.body.appendChild(canvas)
-        });
-    }, 1500);
-}
