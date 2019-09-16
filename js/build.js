@@ -94,8 +94,12 @@ function buildText(item){
     }
     var letterSpacing = item.styles.letterSpacing + "px";
     var lineHeight = item.styles.lineHeight + "%";
+    var uppercase = "";
+    if (item.styles.uppercase === true){
+        uppercase = "text-transform: uppercase;"
+    }
 
-    var html = '<div class="fcv_item fcv_item_selected" data-id="' + id + '" style="z-index: ' + zIndex + '; color: ' + color + '; font-size: ' + fontSize + '; opacity: ' + opacity + ' font-weight: ' + bold + '; font-style: ' + italic + '; text-decoration: ' + decoration + '; letter-spacing: ' + letterSpacing + '; line-height: ' + lineHeight + ';">' + text + '</div>';
+    var html = '<div class="fcv_item fcv_item_selected" data-id="' + id + '" style="z-index: ' + zIndex + '; color: ' + color + '; font-size: ' + fontSize + '; opacity: ' + opacity + ' font-weight: ' + bold + '; font-style: ' + italic + '; text-decoration: ' + decoration + '; letter-spacing: ' + letterSpacing + '; line-height: ' + lineHeight + '; ' + uppercase + '">' + text + '</div>';
 
     document.getElementById("favicon_creator_visual").innerHTML += html;
 

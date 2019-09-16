@@ -301,3 +301,26 @@ function colorStyleInputLinethrough(){
     document.querySelector(".fcv_item[data-id='"+element.id+"']").style.textDecoration = decoration;
 
 }
+
+function colorStyleInputUppercase(){
+
+    document.querySelector("#colorStyle_text_styles_item_uppercase").classList.toggle("colorStyle_text_styles_item_selected");
+    console.log(colorStyleElement)
+
+    var element = layers.filter(function(layer) {
+        return layer.id === colorStyleElement;
+    });
+
+    element = element[0];
+
+    if (document.querySelector("#colorStyle_text_styles_item_uppercase.colorStyle_text_styles_item_selected")){
+        element.styles.uppercase = true;
+        var uppercase = "uppercase";
+    } else {
+        element.styles.uppercase = false;
+        var uppercase = "none";
+    }
+
+    document.querySelector(".fcv_item[data-id='"+element.id+"']").style.textTransform = uppercase;
+
+}

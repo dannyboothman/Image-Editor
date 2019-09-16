@@ -160,7 +160,8 @@ function modalAddElementFinal(){
                 "italic": false,
                 "decoration": 0,
                 "letterSpacing": 0,
-                "lineHeight": 120
+                "lineHeight": 120,
+                "uppercase": false
             }
             document.getElementById("modal_add_element_text").value = "";
             break;

@@ -66,25 +66,17 @@
 
         <div id="favicon_creator_nav_container">
             <nav id="favicon_creator_nav">
-                <a class="favicon_creator_nav_item" onclick="editorNav('Elements');" data-editorNav="Elements">
+                <a class="favicon_creator_nav_item" onclick="editorNav('Items');" data-editorNav="Items">
                     <i class="fas fa-images"></i>
-                    <span>Elements</span>
+                    <span>Items</span>
                 </a>
                 <a class="favicon_creator_nav_item" onclick="editorNav('Edit');" data-editorNav="Edit">
                     <i class="fas fa-tint"></i>
-                    <span>Edit<br />Elements</span>
+                    <span>Edit<br />Items</span>
                 </a>
                 <a class="favicon_creator_nav_item" onclick="editorNav('Canvas');" data-editorNav="Canvas">
                     <i class="fas fa-border-style"></i>
                     <span aria-label="Background">Canvas</span>
-                </a>
-                <a class="favicon_creator_nav_item" onclick="editorNav('Download');" data-editorNav="Download">
-                    <i class="fas fa-download"></i>
-                    <span aria-label="Download">Down<br />load</span>
-                </a>
-                <a class="favicon_creator_nav_item" onclick="editorNav('Warnings');" data-editorNav="Warnings">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    <span aria-label="Download">Warnings</span>
                 </a>
             </nav>
         </div>
@@ -95,9 +87,9 @@
                 <div id="favicon_creator_editor_header_title">Editor</div>
             </div>
 
-            <div class="favicon_creator_editor_section" data-editorSection="Elements">
+            <div class="favicon_creator_editor_section" data-editorSection="Items">
                 
-                <div id="favicon_creator_editor_add_element" onclick="openModal('add-elements')">Add Element</div>
+                <div id="favicon_creator_editor_add_element" onclick="openModal('add-elements')">Add Items</div>
 
                 <div id="favicon_creator_elements">
                     <div id="favicon_creator_elements_inner"></div>
@@ -150,6 +142,7 @@
                             <div id="colorStyle_text_styles_item_italic" class="colorStyle_text_styles_item" onclick="colorStyleInputItalic();"><i class="fas fa-italic"></i></div>
                             <div id="colorStyle_text_styles_item_underline" class="colorStyle_text_styles_item" onclick="colorStyleInputUnderline();"><i class="fas fa-underline"></i></div>
                             <div id="colorStyle_text_styles_item_linethrough" class="colorStyle_text_styles_item" onclick="colorStyleInputLinethrough();"><i class="fas fa-strikethrough"></i></div>
+                            <div id="colorStyle_text_styles_item_uppercase" class="colorStyle_text_styles_item" onclick="colorStyleInputUppercase();"><i class="fas fa-font"></i><i class="fas fa-font" aria-hidden="true"></i></div>
                         </div>
                     </div>
                 </div>
@@ -262,14 +255,6 @@
 
             </div>
 
-            <div class="favicon_creator_editor_section" data-editorSection="Download">
-                download
-            </div>
-
-            <div class="favicon_creator_editor_section" data-editorSection="Warnings">
-                warnings
-            </div>
-
         </div>
 
         <div id="favicon_creator_visual_outer_container">
@@ -285,11 +270,11 @@
 <div class="modal" data-modal="add-elements">
     <div class="modal_close" onclick="closeModal('add-elements')"><i class="fas fa-times"></i></div>
     <div class="modal_header">
-        <div class="modal_header_title">Add Element</div>
+        <div class="modal_header_title">Add Item</div>
     </div>
     <div class="modal_body_outer_container">
         <div class="modal_body">
-            <div class="align_center marginb20">What element would you like to add?</div>
+            <div class="align_center marginb20">What item would you like to add?</div>
             <div id="modal_add_element_buttons">
                 <div class="modal_add_element_button" data-modalAddElementButton="text" onclick="modalAddElementButton(this, 'text'); modalAddElementsChange('text');">
                     <i class="fas fa-keyboard"></i>
@@ -341,11 +326,11 @@
 <div class="modal" data-modal="delete-element">
     <div class="modal_close" onclick="closeModal('delete-element')"><i class="fas fa-times"></i></div>
     <div class="modal_header">
-        <div class="modal_header_title">Delete Element</div>
+        <div class="modal_header_title">Delete Item</div>
     </div>
     <div class="modal_body_outer_container">
         <div class="modal_body">
-            Are you sure you want to delete this element?
+            Are you sure you want to delete this item?
         </div>
     </div>
     <div class="modal_footer">
