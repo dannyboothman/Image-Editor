@@ -1056,6 +1056,26 @@ main{
     height: auto !important;
 }
 
-@media only screen and (min-width:600px){
+.download_file_type_container{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    width: 160px;
+    margin-top: 20px;
+}
 
+.download_file_type_item{
+    width: 75px;
+    line-height: 40px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: 0.4s;
+    text-align: center;
+    cursor: pointer;
+}
+
+.download_file_type_item:hover, .download_file_type_item_selected{
+    background-color: #339af0;
+    border-color: #339af0;
+    color: #fff;
 }

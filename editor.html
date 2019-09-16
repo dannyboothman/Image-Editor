@@ -438,7 +438,14 @@
                         <div id="main_save_modal_example"></div>
                     </div>
                     <div class="width_2">
-                        sd
+                        <div class="input_container">
+                            <label for="download_name">File Name</label>
+                            <input type="text" id="download_name" placeholder="File Name" />
+                        </div>
+                        <div class="download_file_type_container">
+                            <div id="download_file_type_item_jpg" class="download_file_type_item" onclick="selectDownloadFileType(this);">JPG</div>
+                            <div id="download_file_type_item_png" class="download_file_type_item download_file_type_item_selected" onclick="selectDownloadFileType(this);">PNG</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -446,7 +453,7 @@
     </div>
     <div class="modal_footer">
         <div class="modal_footer_button button" onclick="closeModal('file-main-save');">Close</div>
-        <div class="modal_footer_button button button_primary button_disabled">Save</div>
+        <div class="modal_footer_button button button_primary" onclick="download();">Download</div>
     </div>
 </div>
 
@@ -475,6 +482,7 @@
 <script src="js/imageStyle.js"></script>
 <script src="js/Sortable.js"></script>
 <script src="js/html2canvas.js"></script>
+<script src="js/FileSaver.js"></script>
 <script src="js/save.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
 <script>

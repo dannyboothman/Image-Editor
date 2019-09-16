@@ -1,4 +1,5 @@
 
+
 function openSaveModal(){
 
     openModal("file-main-save");
@@ -14,4 +15,25 @@ function openSaveModal(){
         });
     }, 500);
 
+}
+
+function selectDownloadFileType(el){
+
+    var items = document.querySelectorAll(".download_file_type_item");
+    for (var i = 0; i < items.length; i++){
+        items[i].classList.remove("download_file_type_item_selected");
+    }
+
+    el.classList.add("download_file_type_item_selected");
+
+}
+
+
+
+function download(){
+
+    var canvas = document.querySelector("#main_save_modal_example canvas");
+    canvas.toBlob(function(blob) {
+        saveAs(blob, "pretty image.png");
+    });
 }
