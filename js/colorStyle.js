@@ -106,7 +106,7 @@ const textColorPickr = Pickr.create({
             save: true
         }
     },
-    default: '#FFFFFF'
+    default: '#000000'
 });
 
 textColorPickr.on('save', (color, instance) => {
