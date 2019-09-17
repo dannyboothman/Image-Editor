@@ -187,8 +187,8 @@ input:focus{
 #logo_highlight{
     background-color: #339af0;
     color: #FFF;
-    border-radius: 8px;
-    font-size: 1.1em;
+    border-radius: 4px;
+    font-size: 1em;
     width: 30px;
     height: 30px;
     display: inline-block;
