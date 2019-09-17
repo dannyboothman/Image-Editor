@@ -320,6 +320,7 @@ main{
 
 .favicon_creator_menu_item{
     position: relative;
+    user-select: none;
 }
 
 .favicon_creator_menu_item_top{
