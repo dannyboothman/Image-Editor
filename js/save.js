@@ -2,6 +2,9 @@
 
 function openSaveModal(){
 
+    document.getElementById("main_save_modal_example").innerHTML = "";
+    document.querySelector("#main_save_modal_loaded").style.display = "none";
+    document.querySelector("#main_save_modal_loading").style.display = "flex";
     openModal("file-main-save");
 
 
