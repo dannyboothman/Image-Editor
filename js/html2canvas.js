@@ -6188,7 +6188,10 @@
                                         // TODO As some browsers display the line as more than 1px if the font-size is big,
                                         // need to take that into account both in position and size
                                         var baseline = _this.fontMetrics.getMetrics(fontFamily, fontSize).baseline;
-                                        _this.ctx.fillRect(text.bounds.left, Math.round(text.bounds.top + baseline), text.bounds.width, 1);
+                                        //DBWEBDEV added
+                                        var textUnderlineFontSize = fontSize.replace("px", "");
+                                        textUnderlineFontSize = textUnderlineFontSize/10;
+                                        _this.ctx.fillRect(text.bounds.left, Math.round(text.bounds.top + baseline + textUnderlineFontSize), text.bounds.width, textUnderlineFontSize);
                                         break;
                                     case 2 /* OVERLINE */:
                                         _this.ctx.fillRect(text.bounds.left, Math.round(text.bounds.top), text.bounds.width, 1);
