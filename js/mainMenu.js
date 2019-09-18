@@ -11,19 +11,6 @@ function fileNew(){
 
 }
 
-function fileOpen(){
-
-    if (saved.length === 0){
-        document.getElementById("modal_file_open_zero").style.display = "block";
-        document.getElementById("modal_file_open_list").style.display = "none";
-    } else {
-        document.getElementById("modal_file_open_list").style.display = "block";
-        document.getElementById("modal_file_open_zero").style.display = "none";
-    }
-
-    openModal('file-open');
-}
-
 function fileNewFinal(){
     
     closeModal('file-new-save');
@@ -156,3 +143,21 @@ function fileSave(){
     }
 }
 
+
+
+function fileOpenChange(){
+
+    document.getElementById("modal_file_open_final_button").classList.remove("button_disabled");
+
+}
+
+function fileOpenFinal(){
+
+    document.getElementById("modal_file_open_final_button").classList.add("button_disabled");
+
+    document.querySelector(".modal_add_element_button[data-modalAddElementButton='image']").classList.add("modal_add_element_button_active");
+
+    modalAddElementFinal();
+    closeModal('file-open');
+
+}

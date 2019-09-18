@@ -23,8 +23,7 @@
             <div class="favicon_creator_menu_item_top">File</div>
             <div class="favicon_creator_menu_item_dropdown">
                 <div class="favicon_creator_menu_item_dropdown_item" onclick="fileNew();">New</div>
-                <div class="favicon_creator_menu_item_dropdown_item" onclick="fileOpen();">Open</div>
-                <div class="favicon_creator_menu_item_dropdown_item">Import</div>
+                <div class="favicon_creator_menu_item_dropdown_item" onclick="openModal('file-open');">Open</div>
                 <div class="favicon_creator_menu_item_dropdown_item" onclick="fileSaveOpen(false)">Save</div>
                 <div class="favicon_creator_menu_item_dropdown_item" onclick="openSaveModal();">Save New</div>
             </div>
@@ -34,7 +33,6 @@
             <div class="favicon_creator_menu_item_dropdown">
                     <div class="favicon_creator_menu_item_dropdown_item">Undo</div>
                     <div class="favicon_creator_menu_item_dropdown_item">Redo</div>
-                    <div class="favicon_creator_menu_item_dropdown_item"></div>
                 </div>
         </div>
         <div class="favicon_creator_menu_item">
@@ -392,17 +390,12 @@
     </div>
     <div class="modal_body_outer_container">
         <div class="modal_body">
-            <div id="modal_file_open_zero">
-                <p>Zerp</p>
-            </div>
-            <div id="modal_file_open_list">
-                <p>More</p>
-            </div>
+            <div class="dropzone" id="file-open-drop-target"></div>
         </div>
     </div>
     <div class="modal_footer">
         <div class="modal_footer_button button" onclick="closeModal('file-open');">Cancel</div>
-        <div id="modal_file_open_final_button" class="modal_footer_button button button_primary button_disabled">Open</div>
+        <div id="modal_file_open_final_button" class="modal_footer_button button button_primary button_disabled" onclick="fileOpenFinal();">Open</div>
     </div>
 </div>
 
@@ -587,6 +580,32 @@ myDropzone = new Dropzone("div#drop-target",{
             dropzoneAddElementImage = e.target.result;
             document.querySelector(".dropzone").classList.add("dropzone_accepted_ready");
             modalAddElementsChange(null, "image");
+        }
+        // you have to declare the file loading
+        reader.readAsDataURL(file);
+    }
+});
+
+
+myDropzone = new Dropzone("div#file-open-drop-target",{
+    url: "#",
+    maxFilesize: 5,
+    autoProcessQueue: true,
+    maxFiles: 1,
+    acceptedFiles: "image/jpeg,image/png",
+    method: "put",
+    accept: function (file, done) {
+        myDropzone = this;
+        dropzoneAddElementImage = file;
+        console.log(file);
+        dropzoneAddElementImageAll = file;
+        var reader  = new FileReader();
+        // it's onload event and you forgot (parameters)
+        reader.onload = function(e)  {
+            // the result image data
+            dropzoneAddElementImage = e.target.result;
+            document.querySelector(".dropzone").classList.add("dropzone_accepted_ready");
+            fileOpenChange();
         }
         // you have to declare the file loading
         reader.readAsDataURL(file);
