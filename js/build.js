@@ -65,6 +65,8 @@ function buildLayers(){
 
     addContextMenus();
 
+    document.getElementById("favicon_creator_nav_item_edit").classList.remove("favicon_creator_nav_item_disabled");
+
 }
 
 function buildText(item){
@@ -164,6 +166,11 @@ function deleteElementItemFinal(){
 
     closeModal('delete-element');
     sortLayerSequence();
+
+    console.log(layers);
+    if (layers.length == 0){
+        document.getElementById("favicon_creator_nav_item_edit").classList.add("favicon_creator_nav_item_disabled");
+    }
 }
 
 function toggleElementItemVisibility(el, id){

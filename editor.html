@@ -67,11 +67,11 @@
             <nav id="favicon_creator_nav">
                 <a class="favicon_creator_nav_item" onclick="editorNav('Items');" data-editorNav="Items">
                     <i class="fas fa-images"></i>
-                    <span>Items</span>
+                    <span>Add<br />Item</span>
                 </a>
-                <a class="favicon_creator_nav_item" onclick="editorNav('Edit');" data-editorNav="Edit">
+                <a id="favicon_creator_nav_item_edit" class="favicon_creator_nav_item favicon_creator_nav_item_disabled" onclick="editorNav('Edit');" data-editorNav="Edit">
                     <i class="fas fa-tint"></i>
-                    <span>Edit<br />Items</span>
+                    <span>Edit<br />Item</span>
                 </a>
                 <a class="favicon_creator_nav_item" onclick="editorNav('Canvas');" data-editorNav="Canvas">
                     <i class="fas fa-border-style"></i>
@@ -88,7 +88,7 @@
 
             <div class="favicon_creator_editor_section" data-editorSection="Items">
                 
-                <div id="favicon_creator_editor_add_element" onclick="openModal('add-elements')">Add Items</div>
+                <div id="favicon_creator_editor_add_element" onclick="openModal('add-elements')">Add Item</div>
 
                 <div id="favicon_creator_elements">
                     <div id="favicon_creator_elements_inner"></div>
@@ -279,19 +279,19 @@
                     <i class="fas fa-keyboard"></i>
                     <strong>Text</strong>
                 </div>
-                <div class="modal_add_element_button" data-modalAddElementButton="icon" onclick="modalAddElementButton(this, 'icon'); modalAddElementsChange('icon');">
-                    <i class="fab fa-font-awesome-flag"></i>
-                    <strong>Icon</strong>
-                </div>
                 <div class="modal_add_element_button" data-modalAddElementButton="image" onclick="modalAddElementButton(this, 'image'); modalAddElementsChange('image');">
                     <i class="fas fa-image"></i>
                     <strong>Image</strong>
                 </div>
-                <div class="modal_add_element_button" data-modalAddElementButton="emoji" onclick="modalAddElementButton(this, 'emoji'); modalAddElementsChange('emoji');">
+                <div class="modal_add_element_button modal_add_element_button_disabled" data-modalAddElementButton="icon" onclick="modalAddElementButton(this, 'icon'); modalAddElementsChange('icon');">
+                    <i class="fab fa-font-awesome-flag"></i>
+                    <strong>Icon</strong>
+                </div>
+                <div class="modal_add_element_button modal_add_element_button_disabled" data-modalAddElementButton="emoji" onclick="modalAddElementButton(this, 'emoji'); modalAddElementsChange('emoji');">
                     <i class="fas fa-smile-beam"></i>
                     <strong>Emoji</strong>
                 </div>
-                <div class="modal_add_element_button" data-modalAddElementButton="shape" onclick="modalAddElementButton(this, 'shape'); modalAddElementsChange('shape');">
+                <div class="modal_add_element_button modal_add_element_button_disabled" data-modalAddElementButton="shape" onclick="modalAddElementButton(this, 'shape'); modalAddElementsChange('shape');">
                     <i class="fas fa-shapes"></i>
                     <strong>Shape</strong>
                 </div>
@@ -497,7 +497,7 @@ interact('.fcv_item.fcv_item_selected')
         
         }
     })
-    .resizable({
+    /*.resizable({
         // resize from all edges and corners
         edges: { left: true, right: true, bottom: true, top: true },
 
@@ -509,9 +509,9 @@ interact('.fcv_item.fcv_item_selected')
         }),
 
         // minimum size
-        /*interact.modifiers.restrictSize({
-            min: { width: 100, height: 50 }
-        })*/
+        \\interact.modifiers.restrictSize({
+          \\  min: { width: 100, height: 50 }
+        \\})
         ],
 
         inertia: true
@@ -543,8 +543,7 @@ interact('.fcv_item.fcv_item_selected')
 
         target.setAttribute('data-x', x)
         target.setAttribute('data-y', y)
-        /*target.textContent = Math.round(event.rect.width) + '\u00D7' + Math.round(event.rect.height)*/
-    })
+    })*/
 ;
 
 interact('.guide.guide_vertical').draggable({

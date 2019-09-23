@@ -458,6 +458,10 @@ main{
     transition: 0.4s;
 }
 
+.favicon_creator_nav_item.favicon_creator_nav_item_disabled{
+    color: #6cb5f3;
+}
+
 .favicon_creator_nav_item_selected, .favicon_creator_nav_item:hover{
     background-color: #2a80c7;
 }
@@ -800,6 +804,11 @@ main{
     border: 3px dashed #ddd;
     cursor: pointer;
     margin-bottom: 10px;
+}
+
+.modal_add_element_button.modal_add_element_button_disabled{
+    color: #ddd !important;
+    pointer-events: none;
 }
 
 .modal_add_element_button:hover,
