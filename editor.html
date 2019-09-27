@@ -24,15 +24,14 @@
             <div class="favicon_creator_menu_item_dropdown">
                 <div class="favicon_creator_menu_item_dropdown_item" onclick="fileNew();">New</div>
                 <div class="favicon_creator_menu_item_dropdown_item" onclick="openModal('file-open');">Open</div>
-                <div class="favicon_creator_menu_item_dropdown_item" onclick="fileSaveOpen(false)">Save</div>
-                <div class="favicon_creator_menu_item_dropdown_item" onclick="openSaveModal();">Save New</div>
+                <div class="favicon_creator_menu_item_dropdown_item" onclick="openSaveModal();">Save</div>
             </div>
         </div>
         <div class="favicon_creator_menu_item">
             <div class="favicon_creator_menu_item_top">Edit</div>
             <div class="favicon_creator_menu_item_dropdown">
-                    <div class="favicon_creator_menu_item_dropdown_item">Undo</div>
-                    <div class="favicon_creator_menu_item_dropdown_item">Redo</div>
+                    <div class="favicon_creator_menu_item_dropdown_item favicon_creator_menu_item_dropdown_item_disabled">Undo<span class="favicon_creator_menu_item_dropdown_item_comingsoon">Coming Soon</span></div>
+                    <div class="favicon_creator_menu_item_dropdown_item favicon_creator_menu_item_dropdown_item_disabled"><span class="favicon_creator_menu_item_dropdown_item_comingsoon">Coming Soon</span>Redo</div>
                 </div>
         </div>
         <div class="favicon_creator_menu_item">
@@ -283,15 +282,15 @@
                     <i class="fas fa-image"></i>
                     <strong>Image</strong>
                 </div>
-                <div class="modal_add_element_button modal_add_element_button_disabled" data-modalAddElementButton="icon" onclick="modalAddElementButton(this, 'icon'); modalAddElementsChange('icon');">
+                <div class="modal_add_element_button modal_add_element_button_disabled" data-modalAddElementButton="icon">
                     <i class="fab fa-font-awesome-flag"></i>
                     <strong>Icon</strong>
                 </div>
-                <div class="modal_add_element_button modal_add_element_button_disabled" data-modalAddElementButton="emoji" onclick="modalAddElementButton(this, 'emoji'); modalAddElementsChange('emoji');">
+                <div class="modal_add_element_button modal_add_element_button_disabled" data-modalAddElementButton="emoji">
                     <i class="fas fa-smile-beam"></i>
                     <strong>Emoji</strong>
                 </div>
-                <div class="modal_add_element_button modal_add_element_button_disabled" data-modalAddElementButton="shape" onclick="modalAddElementButton(this, 'shape'); modalAddElementsChange('shape');">
+                <div class="modal_add_element_button modal_add_element_button_disabled" data-modalAddElementButton="shape">
                     <i class="fas fa-shapes"></i>
                     <strong>Shape</strong>
                 </div>

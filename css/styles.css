@@ -388,6 +388,13 @@ main{
     background-color: #2a80c7;
 }
 
+.favicon_creator_menu_item_dropdown_item_comingsoon{
+    position: absolute;
+    font-size: 0.6rem;
+    top: -13px;
+    left: 10px;
+}
+
 #favicon_creator_menu_zoom{
     display: flex;
     flex-wrap: nowrap;
@@ -804,14 +811,35 @@ main{
     border: 3px dashed #ddd;
     cursor: pointer;
     margin-bottom: 10px;
+    position: relative;
 }
 
 .modal_add_element_button.modal_add_element_button_disabled{
     color: #ddd !important;
-    pointer-events: none;
 }
 
-.modal_add_element_button:hover,
+.modal_add_element_button.modal_add_element_button_disabled::before{
+    content: 'Coming Soon';
+    position: absolute;
+    top: -20px;
+    background-color: #2a80c7;
+    color: #FFF;
+    border-radius: 4px;
+    font-size: 0.6rem;
+    line-height: 20px;
+    padding: 0 5px;
+    transition: 0.4s;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.modal_add_element_button:hover::before{
+    top: -30px;
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal_add_element_button:not(.modal_add_element_button_disabled):hover,
 .modal_add_element_button_active{
     border-color: #339af0;
 }
@@ -1049,7 +1077,6 @@ main{
 
 #main_save_modal{
     max-width: 90%;
-    height: calc(100% - 100px);
 }
 
 #main_save_modal_loaded{
