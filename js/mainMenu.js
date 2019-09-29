@@ -30,7 +30,7 @@ function fileNewFinal(){
     document.querySelector(".favicon_creator_editor_canvas_fill_type_item[data-type='color'] .favicon_creator_editor_canvas_fill_type_item_inner .pcr-button").style.color = "#339af0";
     
     // Visual
-    document.getElementById("favicon_creator_visual").style.backgroundColor = "#339af0";
+    document.getElementById("favicon_creator_visual").style.backgroundColor = "#FFFFFF";
     document.getElementById("favicon_creator_visual").innerHTML = "";
 
 }

@@ -14,6 +14,8 @@
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700&display=swap" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/a7a177d079.js"></script>
     <script src="js/dropzone.js"></script>
+
+    <script data-ad-client="ca-pub-6994756008803655" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
 <body>
 
@@ -350,7 +352,7 @@
     <div class="modal_footer">
         <div class="modal_footer_button button" onclick="closeModal('file-new-save');">Cancel</div>
         <div class="modal_footer_button button" onclick="fileNewFinal();">No, Start New File</div>
-        <div class="modal_footer_button button button_primary" onclick="closeModal('file-new-save'); fileSaveOpen(true);">Yes, Save First</div>
+        <div class="modal_footer_button button button_primary" onclick="closeModal('file-new-save'); openSaveModal();">Yes, Save First</div>
     </div>
 </div>
 
@@ -451,18 +453,21 @@
     <div class="context_menu_item" onclick="contextDeleteElementItem();">Delete</div>
 </div>
 
-<script src="js/colorPicker.min.js"></script>
-<script src="js/script.js"></script>
+<!--<script src="js/script.js"></script>
 <script src="js/mainMenu.js"></script>
 <script src="js/build.js"></script>
 <script src="js/background.js"></script>
 <script src="js/colorStyle.js"></script>
 <script src="js/imageStyle.js"></script>
+<script src="js/save.js"></script>-->
+
+<script src="js/colorPicker.min.js"></script>
 <script src="js/Sortable.js"></script>
 <script src="js/html2canvas.js"></script>
 <script src="js/FileSaver.js"></script>
-<script src="js/save.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+
+<script src="js/cs-editor.js"></script>
 <script>
 var layerContainer = document.getElementById('favicon_creator_elements_inner');
 
