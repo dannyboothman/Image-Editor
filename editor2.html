@@ -12,15 +12,50 @@
 </head>
 <body>
 
-    <div id="editor">
-        <div id="editor_menu">
-            <div class="editor_menu_item">T</div>
-            <div class="editor_menu_item"><i class="fas fa-image" aria-hidden="true"></i></div>
-            <div class="editor_menu_item"><i class="fab fa-font-awesome-flag" aria-hidden="true"></i></div>
-            <div class="editor_menu_item"><i class="fas fa-smile-beam" aria-hidden="true"></i></div>
-            <div class="editor_menu_item"><i class="fas fa-shapes" aria-hidden="true"></i></div>
+    <div id="cs-editor">
+
+        <div id="cs-editor_menu">
+            <div class="cs-editor_menu_item" onclick="toggleEditPanel(this);" data-type="Text">
+                <div class="cs-editor_menu_item_icon">T</div>
+                <div class="cs-editor_menu_item_text">Text</div>
+            </div>
+            <div class="cs-editor_menu_item" onclick="toggleEditPanel(this);" data-type="Image">
+                <div class="cs-editor_menu_item_icon"><i class="fas fa-image" aria-hidden="true"></i></div>
+                <div class="cs-editor_menu_item_text">Image</div>
+            </div>
+            <div class="cs-editor_menu_item" onclick="toggleEditPanel(this);" data-type="Icon">
+                <div class="cs-editor_menu_item_icon"><i class="fab fa-font-awesome-flag" aria-hidden="true"></i></div>
+                <div class="cs-editor_menu_item_text">Icon</div>
+            </div>
+            <div class="cs-editor_menu_item" onclick="toggleEditPanel(this);" data-type="Emoticon">
+                <div class="cs-editor_menu_item_icon"><i class="fas fa-smile-beam" aria-hidden="true"></i></div>
+                <div class="cs-editor_menu_item_text">Emoticon</div>
+            </div>
+            <div class="cs-editor_menu_item" onclick="toggleEditPanel(this);" data-type="Shape">
+                <div class="cs-editor_menu_item_icon"><i class="fas fa-shapes" aria-hidden="true"></i></div>
+                <div class="cs-editor_menu_item_text">Shape</div>
+            </div>
         </div>
+
+        <div id="cs-editor_edit">
+            <div id="cs-editor_edit_header">
+                <div id="cs-editor_edit_header_back" onclick="closeEditPanel();"><i class="fas fa-long-arrow-alt-left"></i></div>
+                <div id="cs-editor_edit_header_title"></div>
+            </div>
+            <div class="cs-editor_edit_item" data-type="Text">
+                <div class="input_container">
+                    <label for="cs-editor_input_text">Text</label>
+                    <input type="text" id="cs-editor_input_text" placeholder="Text" />
+                </div>
+            </div>
+            <div class="cs-editor_edit_item" data-type="Image">
+                Image
+            </div>
+        </div>
+
     </div>
+
+<script src="js/editor/cs-editor-base.js"></script>
 
 </body>
 </html>
