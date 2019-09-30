@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Club Sketch - Image Editor</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" sizes="64x64" href="images/favicon64x64.png" />
+
+    <link rel="stylesheet" type="text/css" href="assets/css/baseStyles.css" />
+
+    <script src="https://kit.fontawesome.com/a7a177d079.js"></script>
+</head>
+<body>
+
+    
+
+    <div id="cs-editor">
+
+        include "editMenu.html"
+
+        <div id="cs-editor_edit">
+            <div id="cs-editor_edit_header">
+                <div id="cs-editor_edit_header_back" onclick="closeEditPanel();"><i class="fas fa-long-arrow-alt-left"></i></div>
+                <div id="cs-editor_edit_header_title"></div>
+            </div>
+            include "edit-items/edit-items-text.html"
+            include "edit-items/edit-items-image.html"
+        </div>
+
+    </div>
+
+<script src="assets/js/cs-editor-base.js"></script>
+
+</body>
+</html>

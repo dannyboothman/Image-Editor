@@ -1,0 +1,12 @@
+{
+    "name": "Image-Editor",
+    "version": "1.0.0",
+    "description": "",
+    "keywords": [],
+    "author": "Daniel",
+    "license": "ISC",
+    "devDependencies": {
+        "grunt": "^1.0.4",
+        "grunt-includes": "^1.1.0"
+    }
+}
