@@ -27,6 +27,7 @@
                 <div class="favicon_creator_menu_item_dropdown_item" onclick="fileNew();">New</div>
                 <div class="favicon_creator_menu_item_dropdown_item" onclick="openModal('file-open');">Open</div>
                 <div class="favicon_creator_menu_item_dropdown_item" onclick="openSaveModal();">Save</div>
+                <div class="favicon_creator_menu_item_dropdown_item" onclick="openGetJson();">Get JSON</div>
             </div>
         </div>
         <div class="favicon_creator_menu_item">
@@ -437,7 +438,24 @@
     </div>
 </div>
 
-
+<div class="modal" data-modal="file-getJson">
+    <div class="modal_close" onclick="closeModal('file-getJson');"><i class="fas fa-times"></i></div>
+    <div class="modal_header">
+        <div class="modal_header_title">Get JSON</div>
+    </div>
+    <div class="modal_body_outer_container">
+        <div class="modal_body">
+            <div class="input_container">
+                <pre>
+                    <code id="modal_getJson_textarea"></code>
+                </pre>
+            </div>
+        </div>
+    </div>
+    <div class="modal_footer">
+        <div class="modal_footer_button button" onclick="closeModal('file-open');">Cancel</div>
+    </div>
+</div>
 
 <div class="context_menu" data-contextMenu="element-item">
     <div class="context_menu_item" onclick="contextCopyElementItem()">Copy</div>
@@ -453,21 +471,22 @@
     <div class="context_menu_item" onclick="contextDeleteElementItem();">Delete</div>
 </div>
 
-<!--<script src="js/script.js"></script>
-<script src="js/mainMenu.js"></script>
-<script src="js/build.js"></script>
-<script src="js/background.js"></script>
-<script src="js/colorStyle.js"></script>
-<script src="js/imageStyle.js"></script>
-<script src="js/save.js"></script>-->
 
 <script src="js/colorPicker.min.js"></script>
 <script src="js/Sortable.js"></script>
 <script src="js/html2canvas.js"></script>
 <script src="js/FileSaver.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+<!--<script src="js/cs-editor.js"></script>-->
 
-<script src="js/cs-editor.js"></script>
+<script src="js/script.js"></script>
+<script src="js/mainMenu.js"></script>
+<script src="js/build.js"></script>
+<script src="js/background.js"></script>
+<script src="js/colorStyle.js"></script>
+<script src="js/imageStyle.js"></script>
+<script src="js/save.js"></script>
+
 <script>
 var layerContainer = document.getElementById('favicon_creator_elements_inner');
 

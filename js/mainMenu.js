@@ -161,3 +161,17 @@ function fileOpenFinal(){
     closeModal('file-open');
 
 }
+
+function openGetJson(){
+
+    var image = {
+        "canvas": canvas,
+        "layers": layers
+    }
+
+    image = JSON.stringify(image, null, '\t');
+
+    document.getElementById("modal_getJson_textarea").innerText = image;
+
+    openModal('file-getJson');
+}
