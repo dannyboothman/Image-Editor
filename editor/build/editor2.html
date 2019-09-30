@@ -27,9 +27,21 @@
             include "edit-items/edit-items-image.html"
         </div>
 
+        <div id="cs-editor-image-outer-container">
+            <div id="cs-editor-image"></div>
+        </div>
+
     </div>
 
 <script src="assets/js/cs-editor-base.js"></script>
+
+<script>
+    loadImage();
+    function loadImage(){
+        var image = '../../images/favicon64x64.png';
+        document.querySelector("#cs-editor-image").innerHTML = "<img src='"+image+"' />";
+    }
+</script>
 
 </body>
 </html>

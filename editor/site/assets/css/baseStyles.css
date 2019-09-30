@@ -94,7 +94,7 @@
 }
 
 .cs-editor_menu_item:not(.cs-editor_menu_item_active):hover .cs-editor_menu_item_text{
-    left: 105%;
+    left: 110%;
     opacity: 1;
     visibility: visible;
 }
@@ -152,21 +152,47 @@
 
 /* Inputs */
 
-input[type="text"]{
+.cs-editor_edit_item input[type="text"]{
     line-height: 30px;
     padding: 0 5px;
     border: 2px solid transparent;
     width: 100%;
     background-color: var(--dark1);
-    color: var(--text1);
+    color: var(--text2);
     outline: none;
     transition: 0.4s;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
 }
 
-input[type="text"]:hover{
+.cs-editor_edit_item input[type="text"]:hover{
     border-color: var(--purple);
 }
 
-input[type="text"]:focus{
+.cs-editor_edit_item input[type="text"]:focus{
     border-color: var(--pink);
+}
+
+.cs-editor_edit_item label{
+    margin-bottom: 5px;
+    display: block;
+    font-size: 0.75rem;
+    color: var(--pink);
+    letter-spacing: 2px;
+}
+
+
+
+/* Image */
+
+#cs-editor-image-outer-container{
+    width: calc(100% - 80px);
+    height: calc(100vh - 40px);
+    position: absolute;
+    top: 0px;
+    left: 80px;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
