@@ -8,6 +8,7 @@
     <link rel="icon" sizes="64x64" href="images/favicon64x64.png" />
 
     <link rel="stylesheet" type="text/css" href="assets/css/baseStyles.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/modals.css" />
 
     <script src="https://kit.fontawesome.com/a7a177d079.js"></script>
 </head>
@@ -58,6 +59,39 @@
 
         <div id="cs-editor-image-outer-container">
             <div id="cs-editor-image"></div>
+        </div>
+
+        <div class="cs-modal_overlay"></div>
+        <div class="cs-modal" data-modal="new-project">
+            <div class="cs-modal_close"><i class="fas fa-times"></i></div>
+            <div class="cs-modal_header">
+                <div class="cs-modal_header_title">New Project</div>
+            </div>
+            <div class="cs-modal_body_outer">
+                <div class="cs-modal_body cs-paddingt20">
+                    <p class="cs-align_center">How would you like to start your project?</p>
+                    <div id="cs-modal_new_project_options">
+                        <div class="cs-modal_new_project_options_item">
+                            <div class="cs-modal_new_project_options_item_inner">
+                                <div class="cs-modal_new_project_options_item_icon"><i class="far fa-file"></i></div>
+                                <div class="cs-modal_new_project_options_item_name">New<br />Project</div>
+                            </div>
+                        </div>
+                        <div class="cs-modal_new_project_options_item">
+                            <div class="cs-modal_new_project_options_item_inner">
+                                <div class="cs-modal_new_project_options_item_icon"><i class="fas fa-desktop"></i></div>
+                                <div class="cs-modal_new_project_options_item_name">Open From Computer</div>
+                            </div>
+                        </div>
+                        <div class="cs-modal_new_project_options_item">
+                            <div class="cs-modal_new_project_options_item_inner">
+                                <div class="cs-modal_new_project_options_item_icon"><i class="fas fa-code"></i></div>
+                                <div class="cs-modal_new_project_options_item_name">Enter<br />JSON</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>

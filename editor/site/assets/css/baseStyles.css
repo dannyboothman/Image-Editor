@@ -6,6 +6,7 @@
     --text2: #F5F5F7;
     --dark1: #1a1621;
     --dark2: #1e1a25;
+    --dark3: #494058;
     --purple: #7d1759;
     --pink: #dd1e65;
     --ppGradient: linear-gradient(121deg, rgb(125, 23, 89) 0%, rgb(221, 30, 101) 100%);
@@ -17,7 +18,14 @@
     box-sizing: border-box;
 }
 
+.cs-align_center{ text-align: center; }
 
+.cs-paddingb10{ padding-bottom: 10px; }
+.cs-paddingb20{ padding-bottom: 20px; }
+.cs-paddingb30{ padding-bottom: 30px; }
+.cs-paddingt10{ padding-top: 10px; }
+.cs-paddingt20{ padding-top: 20px; }
+.cs-paddingt30{ padding-top: 30px; }
 
 #cs-editor{
     height: 100vh;
@@ -195,4 +203,56 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+
+
+/* Modal */
+
+.cs-modal_overlay{
+    position: fixed;
+    z-index: 10000;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background-color: rgba(26, 22, 33, 0.1);
+}
+
+.cs-modal{
+    position: fixed;
+    z-index: 10001;
+    left: 0; right: 0;
+    top: 10%;
+    background-color: var(--dark2);
+    height: 400px;
+    width: 600px;
+    margin: 0 auto;
+    border: 1px solid var(--dark3);
+    border-radius: 10px;
+    color: var(--text2);
+}
+
+.cs-modal_close{
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    border: 1px solid var(--dark3);
+    background-color: var(--dark2);
+    z-index: 1;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.cs-modal_close:hover{
+    color: var(--pink);
+}
+
+.cs-modal_header{
+    line-height: 50px;
+    padding: 0 20px;
+    border-bottom: 1px solid var(--dark3);
 }
